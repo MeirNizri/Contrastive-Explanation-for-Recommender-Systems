@@ -1,0 +1,355 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<crowd-form answer-format="flatten-objects">
+
+    <div id="itemsRated">
+
+        <h5> The goal of this survey is to examine the quality of a recommendation system for mobile phones.</h5>
+        <h5> Consider the ratings <small>(1-lowest, 10-highest)</small> of user #<span class="user_id"></span>, for the following items: </h5>
+        <div id="itemsRatedData"></div>
+        <br /><hr />
+
+        <h5>How would you characterize the user's preferences, according to his/her ratings?</h5>
+        <p id="emptyCharacterization" style="color:red;">
+            You must answer this question!.
+        </p>
+        <textarea id="userCharacterization" name="user characterization" rows="3" cols=100%></textarea>
+        <br /><hr />
+
+        <div align="center">
+            <button class="button button1" onclick="toComparison()">Next</button>
+        </div>
+    </div>
+
+
+
+    <div id="comparison">
+
+        <h5> Recall the rating of user #<span class="user_id"></span>.</h5>
+        <div id="itemsRatedData2"></div>
+        <br /><hr />
+
+        <h5>The recommendation system recommended the following item to the user:</h5>
+        <div id="recommendedItem"></div>
+        <br />
+
+        <h5>The user, on the other hand, asked why the system did not recommend the following item:</h5>
+        <div id="randomItem"></div>
+        <br /><hr />
+
+        <h5 align="justify">
+            For each of the following explanations, please indicate to what extent do you agree or disagree that the explanation will convince the
+            specific user (#<span class="user_id"></span>) that the item offered by the system is better for him/her.<br />
+            Use a scale from 1 to 7, where 1 means "Strongly Disagree" and 7 means "Strongly Agree".
+            If the explanation provides false information, instead of rating it please check the appropriate checkbox.
+        </h5>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+        <ol>
+            <li>
+                <h5 id="ourExpText" align="justify"></h5>
+                <input type="range" class="slider" id="ourExp" name="ourExp" min="1" max="7" value="4" oninput="ourExpValue.value=value"/>
+                <output id="ourExpValue">4</output><br />
+                <input type="checkbox" id="ourExpBox" name="ourExpBox" onclick="checkboxClick()" value="ourExp">
+                <label for="ourExpBox">The explanation provides false information</label>
+                <br /><hr style="height:2px;border-width:0;color:gray;background-color:gray">
+            </li>
+
+            <li>
+                <h5 id="randomExpText" align="justify"></h5>
+                <input type="range" class="slider" id="randomExp" name="randomExp" min="1" max="7" value="4" oninput="randomExpValue.value=value"/>
+                <output id="randomExpValue">4</output><br />
+                <input type="checkbox" id="randomExpBox" name="randomExpBox" onclick="checkboxClick()" value="randomExp">
+                <label for="randomExpBox">The explanation provides false information</label>
+                <br /><hr style="height:2px;border-width:0;color:gray;background-color:gray">
+            </li>
+
+            <li>
+                <h5 id="linregExpText" align="justify"></h5>
+                <input type="range" class="slider" id="linregExp" name="linregExp" min="1" max="7" value="4" oninput="linregExpValue.value=value"/>
+                <output id="linregExpValue">4</output><br />
+                <input type="checkbox" id="linregExpBox" name="linregExpBox" onclick="checkboxClick()" value="linregExp">
+                <label for="linregExpBox">The explanation provides false information</label>
+                <br /><hr style="height:2px;border-width:0;color:gray;background-color:gray">
+            </li>
+
+            <li>
+                <h5 id="testExpText" align="justify"></h5>
+                <input type="range" class="slider" id="testExp" name="testExp" min="1" max="7" value="4" oninput="testExpValue.value=value"/>
+                <output id="testExpValue">4</output><br />
+                <input type="checkbox" id="testExpBox" name="testExpBox" onclick="checkboxClick()" value="testExp">
+                <label for="testExpBox">The explanation provides false information</label>
+                <br /><hr style="height:2px;border-width:0;color:gray;background-color:gray">
+            </li>
+        </ol>
+
+        <p align="center">
+            <button class="button button1" onclick="toItemsRated()">Back</button>
+            <button class="button button1" onclick="toPersonalInfo()">Next</button>
+        </p>
+    </div>
+
+
+
+    <div id="personalInfo">
+        <h2>Personal Information</h2>
+        <p>
+            <label for="year">Year of birth:</label>
+            <input type="number" id="year" name="year" min="1900" max="2010" />
+        </p>
+
+        <p>
+            <label for="Gender">Gender:</label>
+            <select name="gender" id="gender">
+                <option selected disabled>-Select Gender-</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Prefer not to answer</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="Occupation">Occupation:</label>
+            <input type="text" id="Occupation" name="Occupation" /><br />
+        </p>
+
+
+        <h4>What do you think about this survey:</h4>
+        <textarea id="review" name="review" rows="2" cols="60"></textarea>
+        <br /><hr />
+
+        <p align="center">
+            <button class="button button1" onclick="toComparison()">Back</button>
+            <button class="button button1" type="submit">SUBMIT</button>
+        </p>
+    </div>
+
+</crowd-form>
+
+<script>
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://127.0.0.1:8080/");
+    xhr.send();
+
+    //triggered when the response is completed
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        data = JSON.parse(xhr.responseText);
+        user_references = document.getElementsByClassName("user_id");
+        for (ref of user_references) {
+          ref.innerHTML = data.user_id;
+        }
+        document.getElementById("itemsRatedData").innerHTML = data.items_rated;
+        document.getElementById("itemsRatedData2").innerHTML = data.items_rated;
+        document.getElementById("recommendedItem").innerHTML = data.recommended_item;
+        document.getElementById("randomItem").innerHTML = data.random_item;
+        document.getElementById("ourExpText").innerHTML = (data.explanations)[0];
+        document.getElementById("randomExpText").innerHTML = (data.explanations)[1];
+        document.getElementById("linregExpText").innerHTML = (data.explanations)[2];
+        document.getElementById("testExpText").innerHTML = (data.explanations)[3];
+      } else {
+        loadData()
+        document.getElementById("itemsRatedData").innerHTML = "No records found";
+      }
+    }
+
+    //triggered when a network-level error occurs with the request
+    xhr.onerror = function() {
+        loadData()
+        document.getElementById("demo").innerHTML = "Network error occurred";
+    }
+
+
+    function toItemsRated() {
+        var itemsRated = document.getElementById("itemsRated");
+        var emptyCharacterization = document.getElementById("emptyCharacterization");
+        var comparison = document.getElementById("comparison");
+
+        itemsRated.style.display = "block";
+        emptyCharacterization.style.display = "none";
+        comparison.style.display = "none";
+        window.scrollTo(0, 0);
+    }
+
+
+    function toComparison() {
+        var itemsRated = document.getElementById("itemsRated");
+        var comparison = document.getElementById("comparison");
+        var personalInformation = document.getElementById("personalInfo");
+        var userCharacterization = document.getElementById("userCharacterization");
+
+        if(userCharacterization.value.length != 0) {
+            itemsRated.style.display = "none";
+            comparison.style.display = "block";
+            personalInformation.style.display = "none";
+        } else {
+            document.getElementById("emptyCharacterization").style.display = "block";
+        }
+        window.scrollTo(0, 0);
+    }
+
+
+    function toPersonalInfo() {
+        var comparison = document.getElementById("comparison");
+        var personalInformation = document.getElementById("personalInfo");
+
+        comparison.style.display = "none";
+        personalInformation.style.display = "block";
+        window.scrollTo(0, 0);
+    }
+
+    function checkboxClick() {
+        var ourExpBox = document.getElementById('ourExpBox');
+        var randomExpBox = document.getElementById('randomExpBox');
+        var linregExpBox = document.getElementById('linregExpBox');
+        var testExpBox = document.getElementById('testExpBox');
+
+        if(ourExpBox.checked){
+            document.getElementById("ourExp").disabled = true;
+            document.getElementById("ourExpValue").value = "disabled";
+        } else {
+            var ourExp = document.getElementById("ourExp")
+            ourExp.disabled = false;
+            document.getElementById("ourExpValue").value = ourExp.value;
+        }
+        if(randomExpBox.checked){
+            document.getElementById("randomExp").disabled = true;
+            document.getElementById("randomExpValue").value = "disabled";
+        } else {
+            var randomExp = document.getElementById("randomExp")
+            randomExp.disabled = false;
+            document.getElementById("randomExpValue").value = randomExp.value;
+        }
+        if(linregExpBox.checked){
+            document.getElementById("linregExp").disabled = true;
+            document.getElementById("linregExpValue").value = "disabled";
+        } else {
+            var linregExp = document.getElementById("linregExp")
+            linregExp.disabled = false;
+            document.getElementById("linregExpValue").value = linregExp.value;
+        }
+        if(testExpBox.checked){
+            document.getElementById("testExp").disabled = true;
+            document.getElementById("testExpValue").value = "disabled";
+        } else {
+            var testExp = document.getElementById("testExp")
+            testExp.disabled = false;
+            document.getElementById("testExpValue").value = testExp.value;
+        }
+    }
+
+    var ol = document.querySelector('ol');
+    for (var i = ol.children.length; i >= 0; i--) {
+        ol.appendChild(ol.children[Math.random() * i | 0]);
+    }
+</script>
+
+
+<style>
+    h2 {text-align: center;}
+    .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 12px
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .hr {
+        height:2px;
+        border-width:0;
+        color:gray;
+    }
+
+    .button1 {
+        background-color: white;
+        color: black;
+        border: 2px solid #555555;
+    }
+    .button1:hover {
+        background-color: #555555;
+        color: white;
+    }
+
+
+    .slider {
+      -webkit-appearance: none;
+      width: 50%;
+      height: 10px;
+      border-radius: 5px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .1s;
+      transition: opacity .1s;
+    }
+    .slider:hover {
+      opacity: 1;
+    }
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: blue;
+      cursor: pointer;
+    }
+    .slider:disabled {
+      -webkit-appearance: none;
+      width: 50%;
+      height: 10px;
+      border-radius: 5px;
+      background: #e3e3e3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .1s;
+      transition: opacity .1s;
+    }
+    .slider:disabled::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: grey;
+      cursor: pointer;
+    }
+
+
+    table, th, td {
+      font-family: arial, sans-serif;
+      font-size: 11px;
+    }
+
+
+    #emptyCharacterization {
+        width: 80%;
+        padding-left: 20px;
+        display: none;
+    }
+    #itemsRated {
+        width: 80%;
+        padding-left: 20px;
+    }
+    #comparison {
+        width: 80%;
+        padding-left: 20px;
+        display: none;
+    }
+    #personalInfo {
+        width: 80%;
+        padding-left: 20px;
+        display: none;
+    }
+</style>
