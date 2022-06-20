@@ -178,9 +178,9 @@ def get_contrast_exp(p, q, features):
     diff = ""
     for feature in features:
         if types.is_categorical_dtype(p[feature]):
-            diff += f'The recommended item {feature} is {p[feature]} ' \
+            diff += f' - The recommended item {feature} is {p[feature]} ' \
                     f'and the item offered by the user is {q[feature]}.<br>'
         else:
-            diff += f'The recommended item has a {feature} of {p[feature]} ' \
+            diff += f' - The recommended item has a {feature} of {p[feature]} ' \
                     f'compared to {q[feature]} in the item offered by the user.<br>'
     return diff

@@ -3,28 +3,37 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 from datetime import datetime
 
-from datasets import cellphones
-from models import my_linear_regression_model
+from datasets import cellphones, movielens
+from models import my_linear_regression_model, my_nn_model
 import explanations.items_comparison as exp
 from explanations.fetch_data import get_user, get_items_rated, get_recommended_item
 
 # get data
-data = cellphones()
-items_data, users_data, ratings_data = data.get_data()
-clean_items, clean_users, _ = data.get_clean_data()
+cellphones = cellphones().preprocess()
+# movielens = movielens().preprocess()
 
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/", methods=['GET'])
-def get_data():
+@app.route("/<data_name>/<model_name>/", methods=['GET'])
+def get_data(data_name, model_name):
+    if data_name == "cellphones":
+        data = cellphones
+    elif data_name == "movielens":
+        data = movielens
+    items_data, users_data, ratings_data = data.get_data()
+    clean_items, clean_users, _ = data.get_clean_data()
+
     # get random_item_raw or specific user
     user = get_user(clean_users)
     user_id = user.name
 
     # get data on items the user rated and train Model
     X, y = get_items_rated(user_id, ratings_data, clean_items)
-    model = my_linear_regression_model(X, y)
+    if model_name == "linearRegression":
+        model = my_linear_regression_model(X, y)
+    elif model_name == "mlp":
+        model = my_nn_model(X, y)
 
     # get data of items rated by user
     items_rated_raw = items_data.loc[X.index]
