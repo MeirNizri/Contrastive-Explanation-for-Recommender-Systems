@@ -2,9 +2,9 @@
 __pycache__/
 .git
 ..gitignore
-..gcloudignore
+/.gcloudignore
 .app.yaml
 .venv
 .idea
 .explanations/__pycache__/
-.gitignore
+/.gitignore
