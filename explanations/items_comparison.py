@@ -20,7 +20,7 @@ def contrast_exp(rs_model, user_id, p, q):
         q_copy, q_rating = temp
 
     # sample uniformly objects from the items' data that are "between" p and q
-    num_samples = 500
+    num_samples = 1000
     x_data = sample_between(p_copy, q_copy, num_samples)
     x_data.drop_duplicates(inplace=True)
     x_data.reset_index(drop=True, inplace=True)
@@ -36,7 +36,8 @@ def contrast_exp(rs_model, user_id, p, q):
     weights = linear_regression_model.coef_[0]
 
     # get the scaled weights by w*(p-q) and save only features with a difference between p and q
-    scaled_weights = np.multiply(weights, np.subtract(p_copy.to_numpy(), q_copy.to_numpy()))
+    sub_pq = np.subtract(np.multiply(p_copy.to_numpy(), 1), np.multiply(q_copy.to_numpy(), 1))
+    scaled_weights = np.multiply(weights, sub_pq)
     _, diff_idx = get_diff_features(p_copy, q_copy)
     scaled_weights = scaled_weights[diff_idx]
     features = np.array(p.index)[diff_idx]
@@ -163,24 +164,23 @@ def test_contrast_exp(p, q, max_len=3):
         pass
     random.shuffle(diff_features)
 
-    diff = ""
-    for feature in diff_features[:max_len]:
-        if types.is_categorical_dtype(p[feature]):
-            diff += f'The recommended item {feature} is {q[feature]} ' \
-                    f'and the item offered by the user is {p[feature]}.<br>'
-        else:
-            diff += f'The recommended item has a {feature} of {q[feature]} ' \
-                    f'compared to {p[feature]} in the item offered by the user.<br>'
-    return diff
+    return get_contrast_exp(q, p, diff_features[:max_len] )
 
 
 def get_contrast_exp(p, q, features):
     diff = ""
     for feature in features:
-        if types.is_categorical_dtype(p[feature]):
-            diff += f' - The recommended item {feature} is {p[feature]} ' \
+        if types.is_bool_dtype(p[feature]):
+            if p[feature]:
+                diff += f'- The recommended item is {feature} ' \
+                    f'while the item offered by the user is not {feature}.<br>'
+            else:
+                diff += f'- The recommended item is not {feature} ' \
+                    f'while the item offered by the user is {feature}.<br>'
+        elif types.is_categorical_dtype(p[feature]):
+            diff += f'- The recommended item {feature} is {p[feature]} ' \
                     f'and the item offered by the user is {q[feature]}.<br>'
         else:
-            diff += f' - The recommended item has a {feature} of {p[feature]} ' \
+            diff += f'- The recommended item has a {feature} of {p[feature]} ' \
                     f'compared to {q[feature]} in the item offered by the user.<br>'
     return diff

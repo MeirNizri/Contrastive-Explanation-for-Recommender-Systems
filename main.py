@@ -10,19 +10,26 @@ from explanations.fetch_data import get_user, get_items_rated, get_recommended_i
 
 # get data
 cellphones = cellphones().preprocess()
-# movielens = movielens().preprocess()
+movielens = movielens().preprocess()
 
 app = Flask(__name__)
 CORS(app)
 
 @app.route("/<data_name>/<model_name>/", methods=['GET'])
 def get_data(data_name, model_name):
-    if data_name == "cellphones":
-        data = cellphones
-    elif data_name == "movielens":
-        data = movielens
+    match data_name:
+        case "cellphones":
+            data = cellphones
+            features_to_show = "all"
+        case "movielens":
+            data = movielens
+            features_to_show = ['Title', 'Age rate', 'Release date', 'Genre']
+        case _:
+            raise ValueError
     items_data, users_data, ratings_data = data.get_data()
     clean_items, clean_users, _ = data.get_clean_data()
+    if features_to_show == "all":
+        features_to_show = items_data.columns
 
     # get random_item_raw or specific user
     user = get_user(clean_users)
@@ -30,13 +37,13 @@ def get_data(data_name, model_name):
 
     # get data on items the user rated and train Model
     X, y = get_items_rated(user_id, ratings_data, clean_items)
-    if model_name == "linearRegression":
-        model = my_linear_regression_model(X, y)
-    elif model_name == "mlp":
-        model = my_nn_model(X, y)
+    match model_name:
+        case "linearRegression": model = my_linear_regression_model(X, y)
+        case "mlp": model = my_nn_model(X, y)
+        case _: raise ValueError
 
     # get data of items rated by user
-    items_rated_raw = items_data.loc[X.index]
+    items_rated_raw = items_data.loc[X.index, features_to_show]
     ratings_date = ratings_data.loc[ratings_data['user_id'] == user_id]
     ratings_date.set_index('item_id', inplace=True)
     items_rated_raw = pd.concat([items_rated_raw, ratings_date['date'], y], axis=1)
@@ -53,7 +60,7 @@ def get_data(data_name, model_name):
     # get item with max rating prediction
     recommended_item = get_recommended_item(items_not_rated, model)
     recommended_item_raw = items_data.loc[recommended_item.name]
-    recommended_item_raw_html = recommended_item_raw.to_frame().T.to_html(
+    recommended_item_raw_html = recommended_item_raw[features_to_show].to_frame().T.to_html(
         classes='w3-table-all w3-centered w3-hoverable w3-striped',
         index_names=False
     )
@@ -62,7 +69,7 @@ def get_data(data_name, model_name):
     items_not_rated = items_not_rated.loc[items_not_rated.index.drop(recommended_item.name)]
     random_item = items_not_rated.sample().squeeze()
     random_item_raw = items_data.loc[random_item.name]
-    random_item_raw_html = random_item_raw.to_frame().T.to_html(
+    random_item_raw_html = random_item_raw[features_to_show].to_frame().T.to_html(
         classes='w3-table-all w3-centered w3-hoverable w3-striped',
         index_names=False
     )
@@ -88,7 +95,6 @@ def get_data(data_name, model_name):
         'random_item': random_item_raw_html,
         'explanations': explanations
     })
-    print(response)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
