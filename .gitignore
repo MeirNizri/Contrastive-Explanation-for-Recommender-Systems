@@ -1,10 +1,9 @@
 /setup.cfg
 __pycache__/
 .git
-gitignore
-gcloudignore
+.gitignore
+.gcloudignore
 app.yaml
 venv
-.idea
-.idea/.gitignore
-explanations/__pycache__/
+.idea/
+explanations/__pycache__
