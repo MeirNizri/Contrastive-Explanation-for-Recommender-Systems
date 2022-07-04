@@ -5,9 +5,11 @@ from pandas.api import types
 
 
 def get_diff_features(p, q):
+    unexplainable_features = ['time from release', 'model']
     diff_features, diff_idx = ([], [])
+
     for idx, feature in enumerate(p.index):
-        if q[feature] != p[feature]:
+        if q[feature] != p[feature] and feature not in unexplainable_features:
             diff_features.append(feature)
             diff_idx.append(idx)
     return diff_features, diff_idx

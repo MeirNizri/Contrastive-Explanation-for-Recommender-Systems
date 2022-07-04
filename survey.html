@@ -5,10 +5,16 @@
 
 <crowd-form answer-format="flatten-objects">
 
+    <div id="dataLoad">
+        <h3 style="color:red;">
+            Please wait until all data is loaded ...
+        </h3>
+    </div>
+
     <div id="itemsRated">
 
         <h5> The goal of this survey is to examine the quality of a recommendation system for mobile phones.</h5>
-        <h5> Consider the ratings <small>(1-lowest, 10-highest)</small> of user #<span class="user_id"></span>, for the following items: </h5>
+        <h5> Consider the ratings <small>(1-lowest, <span id="maxRating"></span>-highest)</small> of user #<span class="user_id"></span>, for the following items: </h5>
         <div id="itemsRatedData"></div>
         <br /><hr />
 
@@ -44,7 +50,7 @@
             For each of the following explanations, please indicate to what extent do you agree or disagree that the explanation will convince the
             specific user (#<span class="user_id"></span>) that the item offered by the system is better for him/her.<br />
             Use a scale from 1 to 7, where 1 means "Strongly Disagree" and 7 means "Strongly Agree".
-            If the explanation provides false information, instead of rating it please check the appropriate checkbox.
+            If the explanation provides false information please check the appropriate checkbox.
         </h5>
         <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
@@ -131,7 +137,9 @@
 
 <script>
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1:8080/cellphones/linearRegression/");
+<!--    datasets: cellphones, movielens-->
+<!--    models: linear_regression, linear_regression_user, mlp, mlp_user-->
+    xhr.open("GET", "http://127.0.0.1:8080/movielens/linear_regression_user/");
     xhr.send();
 
     //triggered when the response is completed
@@ -150,6 +158,10 @@
         document.getElementById("randomExpText").innerHTML = (data.explanations)[1];
         document.getElementById("linregExpText").innerHTML = (data.explanations)[2];
         document.getElementById("testExpText").innerHTML = (data.explanations)[3];
+        document.getElementById("maxRating").innerHTML = data.max_rating;
+
+        document.getElementById("itemsRated").style.display = "block";
+        document.getElementById("dataLoad").style.display = "none";
       } else {
         loadData()
         document.getElementById("itemsRatedData").innerHTML = "No records found";
@@ -333,14 +345,19 @@
     }
 
 
-    #emptyCharacterization {
+    #dataLoad {
         width: 80%;
         padding-left: 20px;
-        display: none;
     }
     #itemsRated {
         width: 80%;
         padding-left: 20px;
+        display: none;
+    }
+    #emptyCharacterization {
+        width: 80%;
+        padding-left: 20px;
+        display: none;
     }
     #comparison {
         width: 80%;

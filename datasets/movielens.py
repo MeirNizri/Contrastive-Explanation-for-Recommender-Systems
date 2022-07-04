@@ -1,4 +1,5 @@
 import os
+import re
 from datetime import datetime
 import pandas as pd
 
@@ -18,7 +19,11 @@ class movielens(object):
         self.clean_items = None
         self.clean_users = None
         self.all_data = None
+
         dataset_path = "Datasets/{}".format(self.name)
+        self.genre_list = load_list("{}/m_genre.txt".format(dataset_path))
+        self.director_list = load_list("{}/m_director.txt".format(dataset_path))
+        self.actor_list = load_list("{}/m_actor.txt".format(dataset_path))
 
         # read data if already exist
         if all([os.path.exists(f'{dataset_path}/{file}_data.csv') for file in ['items', 'users', 'ratings']]):
@@ -34,19 +39,32 @@ class movielens(object):
             # create items_data
             self.items_data = pd.read_csv(
                 item_data_path,
-                names=['id', 'Title', 'Year', 'Age rate', 'Release date', 'Genre',
+                names=['id', 'title', 'year', 'age rate', 'release date', 'genres',
                        'director', 'writer', 'actors', 'plot', 'poster'],
                 sep="::", engine='python', encoding="utf-8"
             )
-            self.items_data = self.items_data.drop(columns=['director', 'writer', 'actors', 'plot', 'poster'])
-            genre_list = load_list("{}/m_genre.txt".format(dataset_path))
-            for genre in genre_list:
+            self.items_data = self.items_data.drop(columns=['writer', 'plot', 'poster'])
+
+            for genre in self.genre_list:
                 self.items_data[genre] = 0
+            for director in self.director_list:
+                self.items_data[director] = 0
+            for actor in self.actor_list:
+                self.items_data[actor] = 0
             for idx, row in self.items_data.iterrows():
-                for genre in str(row['Genre']).split(", "):
+                for genre in str(row['genres']).split(", "):
                     self.items_data.loc[idx, genre] = 1
-            for genre in genre_list:
+                for director in str(row['director']).split(", "):
+                    director = re.sub(r'\([^()]*\)', '', director)
+                    self.items_data.loc[idx, director] = 1
+                for actor in str(row['actors']).split(", "):
+                    self.items_data.loc[idx, actor] = 1
+            for genre in self.genre_list:
                 self.items_data[genre] = self.items_data[genre].astype("bool")
+            for director in self.director_list:
+                self.items_data[director] = self.items_data[director].astype("bool")
+            for actor in self.actor_list:
+                self.items_data[actor] = self.items_data[actor].astype("bool")
             self.items_data.set_index('id', inplace=True)
 
             # create ratings_data
@@ -61,14 +79,14 @@ class movielens(object):
 
             def find_time_from_release(x):
                 rate_time = x['date']
-                release_time = self.items_data.loc[x['item_id'], 'Release date']
+                release_time = self.items_data.loc[x['item_id'], 'release date']
                 if isinstance(release_time, str):
                     release_time = datetime.strptime(release_time, '%d %b %Y')
                 else:
-                    release_time = self.items_data.loc[x['item_id'], 'Year']
+                    release_time = self.items_data.loc[x['item_id'], 'year']
                     release_time = datetime.strptime(str(release_time), '%Y')
                 return (rate_time - release_time).days / 365.0
-            self.ratings_data['Time from release'] = self.ratings_data.apply(find_time_from_release, axis=1)
+            self.ratings_data['time from release'] = self.ratings_data.apply(find_time_from_release, axis=1)
 
             # create users_data
             self.users_data = pd.read_csv(
@@ -93,11 +111,10 @@ class movielens(object):
 
         # clean items data
         rate_list = load_list("{}/m_rate.txt".format(dataset_path))
-        self.clean_items['Age rate'] = self.items_data['Age rate'].apply(lambda x: rate_list.index(str(x)))
-        self.clean_items['Age rate'] = self.clean_items['Age rate'].astype("int64")
-        self.clean_items['Release date'] = self.clean_items['Year'].astype("int64")
-        self.clean_items = self.clean_items.drop(
-            columns=['Title', 'Genre', 'Year'])
+        self.clean_items['age rate'] = self.items_data['age rate'].apply(lambda x: rate_list.index(str(x)))
+        self.clean_items['age rate'] = self.clean_items['age rate'].astype("int64")
+        self.clean_items['release date'] = self.clean_items['year'].astype("int64")
+        self.clean_items = self.clean_items.drop(columns=['title', 'genres', 'year', 'director', 'actors'])
 
         # clean users data
         gender_list = load_list("{}/m_gender.txt".format(dataset_path))
@@ -142,3 +159,44 @@ class movielens(object):
 
     def get_name(self):
         return self.name
+
+    def get_contrast_exp(self, p, q, features):
+        diff = ""
+
+        for feature in features:
+            if feature in self.genre_list:
+                if p[feature]:
+                    diff += f'- The recommended movie belongs to the genre of {feature} ' \
+                            f'but the movie offered by the user does not.'
+                else:
+                    diff += f'- The recommended movie does not belong to the {feature} genre ' \
+                            f'but the movie suggested by the user does.'
+
+            elif feature in self.actor_list:
+                if p[feature]:
+                    diff += f'- Actor {feature} plays in the recommended movie ' \
+                            f'but not in the movie offered by the user.'
+                else:
+                    diff += f'- Actor {feature} does not play in the recommended movie ' \
+                            f'but does play in the movie offered by the user.'
+
+            elif feature in self.director_list:
+                if p[feature]:
+                    diff += f'- The recommended movie is directed by {feature} ' \
+                            f'unlike the movie offered by the user.'
+                else:
+                    diff += f'- The recommended movie is not directed by {feature} ' \
+                            f'unlike the movie offered by the user.'
+
+            elif feature == 'age rate':
+                if p[feature] == "UNRATED":
+                    diff += f'- The {feature} {q[feature]} of the movie offered by the user ' \
+                            f'is less suited to user preferences.<br>'
+                else:
+                    diff += f'- The {feature} {p[feature]} of the recommended movie ' \
+                            f'is more suitable for user preferences.<br>'
+            else:
+                diff += f'- The recommended movie was released in {p["year"]}, ' \
+                        f'movies from this period are more suited to user preferences.<br>'
+
+            return diff

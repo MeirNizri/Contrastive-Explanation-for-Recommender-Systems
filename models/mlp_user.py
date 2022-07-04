@@ -1,17 +1,15 @@
 import sys
-import pandas as pd
 from sklearn.neural_network import MLPRegressor
 from sklearn.metrics import mean_squared_error as mse
 
-class mlp:
-    def __init__(self,  user, data):
-        self.user = user
-        self.user['last_rate'] = pd.to_datetime(self.user['last_rate']).year
+from explanations.fetch_data import get_items_rated
 
-        all_data = data.get_all_data()
-        all_data['last_rate'] = pd.to_datetime(all_data['last_rate']).dt.year
-        y_data = all_data['rating']
-        x_data = all_data.drop(columns=['rating'])
+
+class mlp_user:
+    def __init__(self, user, data):
+        clean_items, clean_users, ratings_data = data.get_clean_data()
+        user_id = user.name
+        x_data, y_data = get_items_rated(user_id, ratings_data, clean_items)
 
         # set MLP parameters
         layers = [(100, 50, 30, 10, 5), (20, 10, 5, 2), (5, 5, 5), (10)]
@@ -22,7 +20,7 @@ class mlp:
             mlp_regressor = MLPRegressor(hidden_layer_sizes=layer,
                                          solver='adam',
                                          learning_rate="adaptive",
-                                         max_iter=1000)
+                                         max_iter=500)
             mlp_regressor.fit(x_data, y_data)
             y_pred = mlp_regressor.predict(x_data)
 
@@ -37,7 +35,4 @@ class mlp:
               (params['solver'], params['hidden_layer_sizes'], mlp_best_result))
 
     def predict(self, x, *args):
-        user_x = pd.DataFrame([self.user] * len(x)).reset_index()
-        items_x = x.reset_index(drop=True)
-        user_items = pd.concat([user_x, items_x], axis=1)
-        return self.mlp_best_model.predict(user_items)
+        return self.mlp_best_model.predict(x)

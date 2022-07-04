@@ -1,13 +1,13 @@
 import random
 import numpy as np
 import pandas as pd
-from pandas.api import types
 from itertools import combinations
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import StandardScaler
 
 from .sample_between import sample_between, get_diff_features
 
+unexplainable_features = ['time from release', 'model']
 
 def contrast_exp(rs_model, user_id, p, q):
     # get p and q ratings from the recommendation model, p should be better than q
@@ -20,7 +20,7 @@ def contrast_exp(rs_model, user_id, p, q):
         q_copy, q_rating = temp
 
     # sample uniformly objects from the items' data that are "between" p and q
-    num_samples = 1000
+    num_samples = 500
     x_data = sample_between(p_copy, q_copy, num_samples)
     x_data.drop_duplicates(inplace=True)
     x_data.reset_index(drop=True, inplace=True)
@@ -46,10 +46,7 @@ def contrast_exp(rs_model, user_id, p, q):
     features_weights = dict(zip(features, scaled_weights))
     features_weights = sorted(features_weights.items(), key=lambda x: x[1], reverse=True)
     features_weights = dict(features_weights)
-    try:
-        del features_weights['Time from release']
-    except Exception:
-        pass
+    [features_weights.pop(f, None) for f in unexplainable_features]
 
     # build contrastive explanation by iterating the features in order from high weight to low
     explanation = []
@@ -77,10 +74,6 @@ def random_contrast_exp(rs_model, user_id, p, q):
 
     # randomly shuffle all the different features between p and q
     diff_features, _ = get_diff_features(p_copy, q_copy)
-    try:
-        diff_features.remove('Time from release')
-    except Exception:
-        pass
     random.shuffle(diff_features)
 
     # build contrastive explanation by iterating the features
@@ -111,10 +104,6 @@ def brute_contrast_exp(rs_model, user_id, p, q):
 
     # get all the different features between p and q
     diff_features, _ = get_diff_features(p_copy, q_copy)
-    try:
-        diff_features.remove('Time from release')
-    except Exception:
-        pass
 
     # iterate on every combination of diff_features by length
     for i in range(1, len(diff_features)):
@@ -147,40 +136,18 @@ def lr_contrast_exp(user_data, user_ratings):
     # integrate between features and weights and sort from high to low
     features = np.array(user_data.columns)
     features_weights = dict(zip(features, weights))
+    [features_weights.pop(f, None) for f in unexplainable_features]
     features_weights = sorted(features_weights.items(), key=lambda x: x[1], reverse=True)
     sorted_features = list(map(lambda x: x[0], features_weights))
-    sorted_features.remove('Time from release')
 
     # Return the three features with the highest weight
     return sorted_features[:3]
 
 
-def test_contrast_exp(p, q, max_len=3):
+def test_contrast_exp(p, q, data, max_len=3):
     # randomly shuffle all the different features between p and q
     diff_features, _ = get_diff_features(p, q)
-    try:
-        diff_features.remove('Time from release')
-    except Exception:
-        pass
+
     random.shuffle(diff_features)
 
-    return get_contrast_exp(q, p, diff_features[:max_len] )
-
-
-def get_contrast_exp(p, q, features):
-    diff = ""
-    for feature in features:
-        if types.is_bool_dtype(p[feature]):
-            if p[feature]:
-                diff += f'- The recommended item is {feature} ' \
-                    f'while the item offered by the user is not {feature}.<br>'
-            else:
-                diff += f'- The recommended item is not {feature} ' \
-                    f'while the item offered by the user is {feature}.<br>'
-        elif types.is_categorical_dtype(p[feature]):
-            diff += f'- The recommended item {feature} is {p[feature]} ' \
-                    f'and the item offered by the user is {q[feature]}.<br>'
-        else:
-            diff += f'- The recommended item has a {feature} of {p[feature]} ' \
-                    f'compared to {q[feature]} in the item offered by the user.<br>'
-    return diff
+    return data.get_contrast_exp(q, p, diff_features[:max_len])

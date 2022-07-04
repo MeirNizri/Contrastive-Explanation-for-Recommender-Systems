@@ -1,4 +1,4 @@
-date,rating,user_id,item_id,Time from release
+date,rating,user_id,item_id,time from release
 2015-12-12,2.0,0,0,0.7835616438356164
 2015-12-21,8.0,1,0,0.8082191780821918
 2015-12-18,8.0,2,0,0.8

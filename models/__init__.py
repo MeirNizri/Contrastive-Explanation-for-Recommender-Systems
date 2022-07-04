@@ -1,7 +1,11 @@
-from .linear_regression import my_linear_regression_model
-from .mlp import my_nn_model
+from .linear_regression_user import linear_regression_user
+from .linear_regression import linear_regression
+from .mlp_user import mlp_user
+from .mlp import mlp
 
 __all__ = [
-    "my_linear_regression_model",
-    "my_nn_model"
+    "linear_regression",
+    "linear_regression_user",
+    "mlp",
+    "mlp_user"
 ]

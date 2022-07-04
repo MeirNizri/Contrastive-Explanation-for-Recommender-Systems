@@ -14,10 +14,10 @@ def get_items_rated(user_id, ratings_data, items_data):
     items_rated = ratings_data.loc[ratings_data['user_id'] == user_id]
     items_rated.set_index('item_id', inplace=True)
     items_rated_data = items_data.loc[items_rated.index]
-    items_rated_data = pd.concat([items_rated_data, items_rated['Time from release']], axis=1)
+    items_rated_data = pd.concat([items_rated_data, items_rated['time from release']], axis=1)
 
     # get the ratings of the items rated by the user
-    users_ratings = items_rated['rating'].astype('int')
+    users_ratings = items_rated['rating']
     return items_rated_data, users_ratings
 
 
