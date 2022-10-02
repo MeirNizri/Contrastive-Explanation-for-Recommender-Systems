@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 from datetime import datetime
 import gspread
@@ -36,6 +36,9 @@ def get_items_to_rate():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+@app.route("/survey")
+def survey():
+    return render_template('survey.html')
 
 @app.route("/<phones_id>/<ratings>/<birth_year>/<gender>/<occupation>/")
 def get_comparison_data(phones_id, ratings, birth_year, gender, occupation):
