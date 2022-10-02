@@ -14,9 +14,9 @@
     <h2> Survey on recommendation systems</h2>
     <h5> The goal of this survey is to examine the quality of a recommendation system for mobile phones.</h5>
     <h5> 
-        Assume that you are intrested in buying a new cellphone (without a contract). For each of the following cellphones, 
-        please indicate how likely you are to purchase each of them at the given price,
-        on a scale from 1 (very unlikely) to 10 (very likely).
+        Assume that you are intrested in buying a new cellphone (without a contract). 
+        For each of the following cellphones, please indicate how likely you are to purchase 
+        each of them at the given price, on a scale from 1 (very unlikely) to 10 (very likely).
     </h5>
 
     <p id="emptyRating" style="color:red;">
@@ -27,6 +27,28 @@
     <div id="itemsToRateData"></div>
     <br />
     <hr />
+
+    <h3>Personal Information</h3>
+
+    <p>
+        <label for="year">Year of birth:</label>
+        <input type="number" id="year" name="year" min="1900" max="2010" />
+    </p>
+
+    <p>
+        <label for="Gender">Gender:</label>
+        <select name="gender" id="gender">
+            <option selected disabled>-Select Gender-</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Prefer not to answer</option>
+        </select>
+    </p>
+
+    <p>
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" name="occupation" /><br />
+    </p>
 
     <p align="center">
         <button class="button button1" type="button" onclick="toComparison()">Next</button>
@@ -137,28 +159,6 @@
 
 
         <div id="personalInfo">
-            <h2>Personal Information</h2>
-
-            <p>
-                <label for="year">Year of birth:</label>
-                <input type="number" id="year" name="year" min="1900" max="2010" />
-            </p>
-
-            <p>
-                <label for="Gender">Gender:</label>
-                <select name="gender" id="gender">
-                    <option selected disabled>-Select Gender-</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Prefer not to answer</option>
-                </select>
-            </p>
-
-            <p>
-                <label for="occupation">Occupation:</label>
-                <input type="text" id="occupation" name="occupation" /><br />
-            </p>
-
             <p>
                 <h4>What do you think about this survey:</h4>
                 <textarea id="review" name="review" rows="2" cols="80"></textarea>
@@ -239,7 +239,7 @@
 
             const xhr1 = new XMLHttpRequest();
             //xhr1.open("GET", "https://contrast-explanation-rs.uc.r.appspot.com/"+phones_id+"/"+rating+"/");
-            xhr1.open("GET", "http://127.0.0.1:8080/"+phones_id+"/"+rating+"/");
+            xhr1.open("GET", "http://127.0.0.1:8080/"+phones_id+"/"+rating+"/"+year.value+"/"+gender.value+"/"+occupation.value+"/");
             xhr1.send();
             
             //triggered when the response is completed
@@ -259,7 +259,7 @@
                     comparison.style.display = "block";
                 } 
                 else {
-                    if (fails < 6) {
+                    if (fails < 1) {
                         toComparison()
                         fails = fails+1
                     } else {
@@ -271,7 +271,7 @@
             }
             
             xhr1.onerror = function () {
-                if (fails < 6) {
+                if (fails < 1) {
                     toComparison()
                     fails = fails+1
                 } else {
@@ -460,24 +460,24 @@
 
 
     #dataLoad {
-        width: 80%;
+        width: 90%;
         padding-left: 20px;
     }
 
     #itemsToRate {
-        width: 80%;
+        width: 90%;
         padding-left: 20px;
         display: none;
     }
 
     #emptyRating {
-        width: 80%;
+        width: 90%;
         padding-left: 20px;
         display: none;
     }
 
     #dataLoad2 {
-        width: 80%;
+        width: 90%;
         padding-left: 20px;
         display: none;
     }
@@ -487,7 +487,7 @@
     }
 
     #failure { 
-        width: 80%;
+        width: 90%;
         padding-left: 20px;
         display: none;
     }
@@ -499,7 +499,7 @@
     }
 
     #personalInfo {
-        width: 80%;
+        width: 90%;
         padding-left: 20px;
         display: none;
     }
