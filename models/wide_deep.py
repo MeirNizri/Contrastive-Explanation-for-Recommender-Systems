@@ -37,7 +37,6 @@ class wide_deep_model:
         DATA_DIR = None
         TRAIN_PICKLE_PATH = None
         TEST_PICKLE_PATH = None
-        EXPORT_DIR_BASE = './outputs/model'
         # Model checkpoints directory. If None, use temp-dir.
         MODEL_DIR = None
 
@@ -52,8 +51,9 @@ class wide_deep_model:
         LINEAR_L2_REG = 0.0
         LINEAR_MOMENTUM = 0.0         # Momentum for MomentumOptimizer or RMSPropOptimizer
         # DNN model hyperparameters
-        DNN_OPTIMIZER = 'adadelta'
-        DNN_OPTIMIZER_LR = 0.1
+        DNN_OPTIMIZER = 'adam'
+        # DNN_OPTIMIZER = 'adadelta'
+        DNN_OPTIMIZER_LR = 0.0621
         DNN_L1_REG = 0.0           # Regularization rate for FtrlOptimizer
         DNN_L2_REG = 0.0
         DNN_MOMENTUM = 0.0         # Momentum for MomentumOptimizer or RMSPropOptimizer
@@ -64,8 +64,8 @@ class wide_deep_model:
         DNN_HIDDEN_LAYER_4 = 512   # Note, at least one layer should have nodes.
         DNN_HIDDEN_UNITS = [h for h in [DNN_HIDDEN_LAYER_1, DNN_HIDDEN_LAYER_2, DNN_HIDDEN_LAYER_3, DNN_HIDDEN_LAYER_4] if h > 0]
         DNN_USER_DIM = 16          # User embedding feature dimension
-        DNN_ITEM_DIM = 64          # Item embedding feature dimension
-        DNN_DROPOUT = 0.9
+        DNN_ITEM_DIM = 32          # Item embedding feature dimension
+        DNN_DROPOUT = 0.8
         DNN_BATCH_NORM = 1         # 1 to use batch normalization, 0 if not.
 
 
@@ -133,8 +133,8 @@ class wide_deep_model:
             dnn_hidden_units=DNN_HIDDEN_UNITS,
             dnn_dropout=DNN_DROPOUT,
             dnn_batch_norm=(DNN_BATCH_NORM==1),
-            log_every_n_iter=max(1, STEPS//20),  # log 10 times
-            save_checkpoints_steps=max(1, STEPS//5),
+            log_every_n_iter=max(1, STEPS//10),  # log 10 times
+            save_checkpoints_steps=max(1, STEPS//10),
             seed=RANDOM_SEED
         )
 

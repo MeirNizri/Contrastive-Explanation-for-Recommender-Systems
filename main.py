@@ -17,7 +17,7 @@ all_data = data.get_all_data()
 # create model
 wide_deep = wide_deep_model()
 # create flask app
-app = Flask(__name__)
+app = Flask(__name__, template_folder='template')
 CORS(app)
 
 
@@ -36,7 +36,7 @@ def get_items_to_rate():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route("/survey")
+@app.route("/survey/")
 def survey():
     return render_template('survey.html')
 
