@@ -138,12 +138,9 @@ def add_new_user(age, gender, occupation, phones_id, ratings, recommended_phone,
     users_sheet.update([users_data.columns.values.tolist()] + users_data.values.tolist())
 
     # return all data needed for server in json format
-    response = jsonify({
-        'empty': " "
-    })
+    response = jsonify({'empty': " "})
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
-
 
 
 if __name__ == "__main__":

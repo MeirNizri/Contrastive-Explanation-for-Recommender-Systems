@@ -43,7 +43,7 @@ class wide_deep_model:
 
         #Hyperparameters
         MODEL_TYPE = 'wide_deep'
-        STEPS = 5000  # Number of batches to train
+        STEPS = 100000  # Number of batches to train
         BATCH_SIZE = 32
         # Wide (linear) model hyperparameters
         LINEAR_OPTIMIZER = 'adagrad'

@@ -77,10 +77,8 @@ class cellphones(object):
         return self.clean_users
     
     def get_all_data(self):
-        if self.all_data is not None:
-            return self.all_data
-        
-        self.all_data = pd.read_csv('datasets/all data.csv')
+        if self.all_data is None:
+            self.all_data = pd.read_csv('datasets/all data.csv')
 
         # if not self.preprocessed:
         #     self.preprocess()
