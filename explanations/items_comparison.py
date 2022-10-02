@@ -44,7 +44,7 @@ def contrast_exp(rs_model, p, q, data):
     # integrate between features and weights and sort from high to low
     features_weights = dict(zip(features, scaled_weights))
     features_weights = sorted(features_weights.items(), key=lambda x: x[1], reverse=True)
-    print(f'features weights {features_weights}')
+    # print(f'features weights {features_weights}')
     features_weights = dict(features_weights)
     
     for k in unrelevent_features:
