@@ -1,5 +1,6 @@
-pandas~=1.4.2
-Flask~=2.1.2
-numpy~=1.22.4
-Flask_Cors~=3.0.10
-scikit-learn~=1.1.1
+Flask==2.1.2
+Flask_Cors==3.0.10
+gspread==5.4.0
+numpy==1.22.4
+pandas==1.4.2
+scikit_learn==1.1.2

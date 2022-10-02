@@ -1,9 +1,11 @@
 /setup.cfg
-__pycache__/
+__pycache__
 .git
 .gitignore
 .gcloudignore
 app.yaml
-venv
-.idea/
-explanations/__pycache__
+.vscode
+explanations\__pycache__
+datasets\__pycache__
+models\__pycache__
+datasets\contrastive-explanation-for-rs-41f703512db2.json"

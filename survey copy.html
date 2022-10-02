@@ -1,0 +1,506 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div id="dataLoad">
+    <br />
+    <h2>
+        Please wait a few seconds while data is loaded ...
+    </h2>
+</div>
+
+
+<div id="itemsToRate">
+    <h2> Survey on recommendation systems</h2>
+    <h5> The goal of this survey is to examine the quality of a recommendation system for mobile phones.</h5>
+    <h5> 
+        Assume that you are intrested in buying a new cellphone (without a contract). 
+        For each of the following cellphones, please indicate how likely you are to purchase 
+        each of them at the given price, on a scale from 1 (very unlikely) to 10 (very likely).
+    </h5>
+
+    <p id="emptyRating" style="color:red;">
+        You must rate all cellphones!.
+    </p>
+    <br />
+
+    <div id="itemsToRateData"></div>
+    <br />
+    <hr />
+
+    <h3>Personal Information</h3>
+
+    <p>
+        <label for="year">Year of birth:</label>
+        <input type="number" id="year" name="year" min="1900" max="2010" />
+    </p>
+
+    <p>
+        <label for="Gender">Gender:</label>
+        <select name="gender" id="gender">
+            <option selected disabled>-Select Gender-</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Prefer not to answer</option>
+        </select>
+    </p>
+
+    <p>
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" name="occupation" /><br />
+    </p>
+
+    <p align="center">
+        <button class="button button1" type="button" onclick="toComparison()">Next</button>
+    </p>
+    <br />
+</div>
+
+
+<div id="dataLoad2">
+    <br />
+    <h2>
+        Please wait a few seconds while data is loaded ...
+    </h2>
+</div>
+
+
+<div id="survey"></div>
+    <crowd-form answer-format="flatten-objects" onsubmit="return addUser()">
+
+        <div id="failure">
+            <br />
+            <h2>
+                There was a server error loading the data. 
+                Click "Try Again" to reload or click "Next" to end survey.
+            </h2>
+
+            <p align="center">
+                <button class="button button1" type="button" onclick="toComparison()">Try Again</button>
+                <button class="button button1" type="button" onclick="toPersonalInfo()">Next</button>
+            </p>
+            <br />
+        </div>
+
+        <div id="comparison">
+            <h2> Survey on recommendation systems</h2>
+
+            <h5> The recommendation system recommended you the following cellphone:</h5>
+            <div id="recommendedItem"></div>
+            <br />
+            <h5> However, Alex, who has preferences very similar to yours preferred the following cellphone:</h5>
+            <div id="randomItem"></div>
+            <br />
+            <h5> Please pay close attention to the specification differences between the two cellphones above.</h5>
+            <hr />
+
+            <h5 align="justify">
+                For each of the following explanations, please indicate to what extent the explanation 
+                convinces you that the recommended cellphone is better for you than the cellphone that Alex prefers.
+                Use a scale from 1 (strongly disagree) to 7 (strongly agree).<br />
+                <b>Note!</b> if the explanation provides false information you must check the appropriate checkbox.
+            </h5>
+            <hr style="height:2px; border-width:0; color:gray; background-color:gray">
+
+            <ol>
+                <li>
+                    <h5 id="ourExpText" align="justify"></h5>
+                    <input type="range" class="slider" id="ourExp" name="ourExp" min="1" max="7" value="4"
+                        oninput="ourExpValue.value=value" />
+                    <output id="ourExpValue">4</output><br />
+                    <input type="checkbox" id="ourExpBox" name="ourExpBox" onclick="checkboxClick()" value="ourExp">
+                    <label for="ourExpBox">The explanation provides false information</label>
+                    <br />
+                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                </li>
+
+                <li>
+                    <h5 id="randomExpText" align="justify"></h5>
+                    <input type="range" class="slider" id="randomExp" name="randomExp" min="1" max="7" value="4"
+                        oninput="randomExpValue.value=value" />
+                    <output id="randomExpValue">4</output><br />
+                    <input type="checkbox" id="randomExpBox" name="randomExpBox" onclick="checkboxClick()"
+                        value="randomExp">
+                    <label for="randomExpBox">The explanation provides false information</label>
+                    <br />
+                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                </li>
+
+                <li>
+                    <h5 id="linregExpText" align="justify"></h5>
+                    <input type="range" class="slider" id="linregExp" name="linregExp" min="1" max="7" value="4"
+                        oninput="linregExpValue.value=value" />
+                    <output id="linregExpValue">4</output><br />
+                    <input type="checkbox" id="linregExpBox" name="linregExpBox" onclick="checkboxClick()"
+                        value="linregExp">
+                    <label for="linregExpBox">The explanation provides false information</label>
+                    <br />
+                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                </li>
+
+                <li>
+                    <h5 id="testExpText" align="justify"></h5>
+                    <input type="range" class="slider" id="testExp" name="testExp" min="1" max="7" value="4"
+                        oninput="testExpValue.value=value" />
+                    <output id="testExpValue">4</output><br />
+                    <input type="checkbox" id="testExpBox" name="testExpBox" onclick="checkboxClick()" value="testExp">
+                    <label for="testExpBox">The explanation provides false information</label>
+                    <br />
+                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                </li>
+            </ol>
+
+            <p align="center">
+                <button class="button button1" type="button" onclick="backItemsToRate()">Back</button>
+                <button class="button button1" type="button" onclick="toPersonalInfo()">Next</button>
+            </p>
+            <br />
+        </div>
+
+
+        <div id="personalInfo">
+            <p>
+                <h4>What do you think about this survey:</h4>
+                <textarea id="review" name="review" rows="2" cols="80"></textarea>
+            </p>
+            <br />
+            <hr />
+
+            <p align="center">
+                <button class="button button1" type="button" onclick="backComparison()">Back</button>
+                <button class="button button1" type="submit">Submit</button>
+            </p>
+            <br />
+        </div>
+
+    </crowd-form>
+</div>
+
+
+
+<script>
+    var fails = 0
+    var phones_id = " "
+    const xhr = new XMLHttpRequest();
+    //xhr.open("GET", "https://contrast-explanation-rs.uc.r.appspot.com/");
+    xhr.open("GET", "http://127.0.0.1:8080/");
+    xhr.send();
+    
+    //triggered when the response is completed
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            data = JSON.parse(xhr.responseText);
+            document.getElementById("itemsToRateData").innerHTML = data.phones_to_rate;
+            phones_id = data.phones_id;
+
+            document.getElementById("itemsToRate").style.display = "block";
+            document.getElementById("dataLoad").style.display = "none";
+
+            window.scrollTo(0, 0);
+        } 
+        else {
+        }
+    }
+
+
+    function backItemsToRate() {
+        var itemsToRate = document.getElementById("itemsToRate");
+        var emptyRating = document.getElementById("emptyRating");
+        var survey = document.getElementById("survey");
+        var comparison = document.getElementById("comparison");
+        var failure = document.getElementById("failure");
+
+        itemsToRate.style.display = "block";
+        emptyRating.style.display = "none";
+        comparison.style.display = "none";
+        failure.style.display = "none";
+        survey.style.display = "none";
+        window.scrollTo(0, 0);
+    }
+
+
+    function toComparison() {
+        var itemsToRate = document.getElementById("itemsToRate");
+        var emptyRating = document.getElementById("emptyRating");
+        var dataLoad = document.getElementById("dataLoad");
+        var survey = document.getElementById("survey");
+        var comparison = document.getElementById("comparison");
+        var failure = document.getElementById("failure");
+        
+        var rating = [phone_0.value, phone_1.value, phone_2.value, phone_3.value, phone_4.value, phone_5.value, phone_6.value, phone_7.value, phone_8.value, phone_9.value];
+
+        if (rating.includes("")) {
+            emptyRating.style.display = "block";
+        } 
+        else {
+            itemsToRate.style.display = "none";
+            dataLoad.style.display = "block";
+            failure.style.display = "none";
+
+            const xhr1 = new XMLHttpRequest();
+            //xhr1.open("GET", "https://contrast-explanation-rs.uc.r.appspot.com/"+phones_id+"/"+rating+"/");
+            xhr1.open("GET", "http://127.0.0.1:8080/"+phones_id+"/"+rating+"/"+year.value+"/"+gender.value+"/"+occupation.value+"/");
+            xhr1.send();
+            
+            //triggered when the response is completed
+            xhr1.onload = function () {
+                if (xhr1.status === 200) {
+                    data = JSON.parse(xhr1.responseText);
+                    document.getElementById("recommendedItem").innerHTML = data.recommended_item;
+                    document.getElementById("randomItem").innerHTML = data.random_item;
+                    document.getElementById("ourExpText").innerHTML = (data.explanations)[0];
+                    document.getElementById("randomExpText").innerHTML = (data.explanations)[1];
+                    document.getElementById("linregExpText").innerHTML = (data.explanations)[2];
+                    document.getElementById("testExpText").innerHTML = (data.explanations)[3];
+
+                    dataLoad.style.display = "none";
+                    failure.style.display = "none";
+                    survey.style.display = "block";
+                    comparison.style.display = "block";
+                } 
+                else {
+                    if (fails < 1) {
+                        toComparison()
+                        fails = fails+1
+                    } else {
+                        dataLoad.style.display = "none";
+                        survey.style.display = "block";
+                        failure.style.display = "block";
+                    }
+                }
+            }
+            
+            xhr1.onerror = function () {
+                if (fails < 1) {
+                    toComparison()
+                    fails = fails+1
+                } else {
+                    dataLoad.style.display = "none";
+                    survey.style.display = "block";
+                    failure.style.display = "block";
+                }
+            }
+        }
+        window.scrollTo(0, 0);
+    }
+
+
+    function backComparison() {
+        var comparison = document.getElementById("comparison");
+        var personalInformation = document.getElementById("personalInfo");
+
+        comparison.style.display = "block";
+        personalInformation.style.display = "none";
+
+        window.scrollTo(0, 0);
+    }
+
+
+    function toPersonalInfo() {
+        var comparison = document.getElementById("comparison");
+        var failure = document.getElementById("failure");
+        var personalInformation = document.getElementById("personalInfo");
+
+        comparison.style.display = "none";
+        failure.style.display = "none";
+        personalInformation.style.display = "block";
+        window.scrollTo(0, 0);
+    }
+
+    function addUser() {
+        var rating2 = [phone_0.value, phone_1.value, phone_2.value, phone_3.value, phone_4.value, phone_5.value, phone_6.value, phone_7.value, phone_8.value, phone_9.value];
+        recommendedItem = document.getElementById("recommendedItem").getElementsByTagName('td')[1].innerHTML;
+        randomItem = document.getElementById("randomItem").getElementsByTagName('td')[1].innerHTML;
+        ourExp = document.getElementById("ourExpText").innerHTML
+
+
+        const xhr2 = new XMLHttpRequest();
+        //xhr2.open("GET", "https://contrast-explanation-rs.uc.r.appspot.com/"+year.value+"/"+gender.value+"/"+occupation.value+"/"+phones_id+"/"+rating2+"/"+recommendedItem+"/"+randomItem+"/"+ourExp+"/");
+        xhr2.open("GET", "http://127.0.0.1:8080/"+year.value+"/"+gender.value+"/"+occupation.value+"/"+phones_id+"/"+rating2+"/"+recommendedItem+"/"+randomItem+"/"+ourExp+"/");
+        xhr2.send();
+    }
+
+
+    function checkboxClick() {
+        var ourExpBox = document.getElementById('ourExpBox');
+        var randomExpBox = document.getElementById('randomExpBox');
+        var linregExpBox = document.getElementById('linregExpBox');
+        var testExpBox = document.getElementById('testExpBox');
+
+        if (ourExpBox.checked) {
+            document.getElementById("ourExp").disabled = true;
+            document.getElementById("ourExpValue").value = "disabled";
+        } else {
+            var ourExp = document.getElementById("ourExp")
+            ourExp.disabled = false;
+            document.getElementById("ourExpValue").value = ourExp.value;
+        }
+        if (randomExpBox.checked) {
+            document.getElementById("randomExp").disabled = true;
+            document.getElementById("randomExpValue").value = "disabled";
+        } else {
+            var randomExp = document.getElementById("randomExp")
+            randomExp.disabled = false;
+            document.getElementById("randomExpValue").value = randomExp.value;
+        }
+        if (linregExpBox.checked) {
+            document.getElementById("linregExp").disabled = true;
+            document.getElementById("linregExpValue").value = "disabled";
+        } else {
+            var linregExp = document.getElementById("linregExp")
+            linregExp.disabled = false;
+            document.getElementById("linregExpValue").value = linregExp.value;
+        }
+        if (testExpBox.checked) {
+            document.getElementById("testExp").disabled = true;
+            document.getElementById("testExpValue").value = "disabled";
+        } else {
+            var testExp = document.getElementById("testExp")
+            testExp.disabled = false;
+            document.getElementById("testExpValue").value = testExp.value;
+        }
+    }
+
+    var ol = document.querySelector('ol');
+    for (var i = ol.children.length; i >= 0; i--) {
+        ol.appendChild(ol.children[Math.random() * i | 0]);
+    }
+
+</script>
+
+
+<style>
+    .button {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .button1 {
+        background-color: white;
+        color: black;
+        border: 2px solid #555555;
+    }
+
+    .button1:hover {
+        background-color: #555555;
+        color: white;
+    }
+
+    .hr {
+        height: 2px;
+        border-width: 0;
+        color: gray;
+    }
+
+    .slider {
+        -webkit-appearance: none;
+        width: 50%;
+        height: 10px;
+        border-radius: 5px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .1s;
+        transition: opacity .1s;
+    }
+
+    .slider:hover {
+        opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: blue;
+        cursor: pointer;
+    }
+
+    .slider:disabled {
+        -webkit-appearance: none;
+        width: 50%;
+        height: 10px;
+        border-radius: 5px;
+        background: #e3e3e3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .1s;
+        transition: opacity .1s;
+    }
+
+    .slider:disabled::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: grey;
+        cursor: pointer;
+    }
+
+    table,
+    th,
+    td {
+        font-family: arial, sans-serif;
+        font-size: 11px;
+    }
+
+
+    #dataLoad {
+        width: 90%;
+        padding-left: 20px;
+    }
+
+    #itemsToRate {
+        width: 90%;
+        padding-left: 20px;
+        display: none;
+    }
+
+    #emptyRating {
+        width: 90%;
+        padding-left: 20px;
+        display: none;
+    }
+
+    #dataLoad2 {
+        width: 90%;
+        padding-left: 20px;
+        display: none;
+    }
+    
+    #survey {
+        display: none;
+    }
+
+    #failure { 
+        width: 90%;
+        padding-left: 20px;
+        display: none;
+    }
+
+    #comparison {
+        width: 90%;
+        padding-left: 20px;
+        display: none;
+    }
+
+    #personalInfo {
+        width: 90%;
+        padding-left: 20px;
+        display: none;
+    }
+</style>
