@@ -97,6 +97,6 @@ def lr_contrast_exp(user_data, user_ratings):
     return sorted_features
 
 
-def test_contrast_exp(p):
+def test_contrast_exp():
     return f'- The recommended cellphone operating system is Ubuntu, ' \
         f'compared to MS-DOS, which is the operating system of the cellphone that Alex preferred.<br>'

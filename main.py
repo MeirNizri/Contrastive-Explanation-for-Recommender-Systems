@@ -83,7 +83,7 @@ def get_comparison_data(phones_id, ratings, birth_year, gender, occupation):
     random_exp = data.get_contrast_exp(recommended_item_raw, random_item_raw, random_exp_features, max_len)
     lr_exp_features = exp.lr_contrast_exp(phones_data, ratings)
     lr_exp = data.get_contrast_exp(recommended_item_raw, random_item_raw, lr_exp_features, max_len)
-    test_exp = exp.test_contrast_exp(recommended_item_raw)
+    test_exp = exp.test_contrast_exp()
 
     # send data in json format
     response = jsonify({

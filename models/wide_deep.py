@@ -42,7 +42,7 @@ class wide_deep_model:
 
         #Hyperparameters
         MODEL_TYPE = 'wide_deep'
-        STEPS = 50000  # Number of batches to train
+        STEPS = 5000  # Number of batches to train
         BATCH_SIZE = 32
         # Wide (linear) model hyperparameters
         LINEAR_OPTIMIZER = 'adagrad'
@@ -51,8 +51,8 @@ class wide_deep_model:
         LINEAR_L2_REG = 0.0
         LINEAR_MOMENTUM = 0.0         # Momentum for MomentumOptimizer or RMSPropOptimizer
         # DNN model hyperparameters
-        DNN_OPTIMIZER = 'adam'
-        # DNN_OPTIMIZER = 'adadelta'
+        # DNN_OPTIMIZER = 'adam'
+        DNN_OPTIMIZER = 'adadelta'
         DNN_OPTIMIZER_LR = 0.0621
         DNN_L1_REG = 0.0           # Regularization rate for FtrlOptimizer
         DNN_L2_REG = 0.0
