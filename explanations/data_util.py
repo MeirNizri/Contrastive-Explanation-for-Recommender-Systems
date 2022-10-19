@@ -68,7 +68,8 @@ def rate_to_html(phones_to_rate):
     # add a rating option to every cellphone
     phones_to_rate.reset_index(drop=True, inplace=True)
     for idx, _ in phones_to_rate.iterrows():
-        phones_to_rate.loc[idx, 'rating'] = f'<input type="number" id="phone_{idx}" name="phone_{idx}" min="1" max="10" /> '
+        phones_to_rate.loc[idx, 'rating'] = f'<input type="number" id="phone_{idx}" name="phone_{idx}" min="1" max="10" />'
+        phones_to_rate.loc[idx, 'your explanation'] = f'<input type="text" id="exp_{idx}" name="exp_{idx}" />'
 
     # convert phone data to html code
     css_classes = 'w3-table-all w3-centered w3-hoverable w3-striped'

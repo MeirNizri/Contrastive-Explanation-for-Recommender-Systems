@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 
 from .data_util import sample_between, get_diff_features, get_diff_indexes
 
-unrelevent_features = ['cellphone_id', 'user_id',' age', 'gender', 'occupation']
+irrelevant_features = ['cellphone_id', 'user_id',' age', 'gender', 'occupation']
 
 
 def contrast_exp(rs_model, p, q, data):
@@ -47,7 +47,7 @@ def contrast_exp(rs_model, p, q, data):
     # print(f'features weights {features_weights}')
     features_weights = dict(features_weights)
     
-    for k in unrelevent_features:
+    for k in irrelevant_features:
         features_weights.pop(k, None)
 
     # build contrastive explanation by iterating the features in order from high weight to low
@@ -69,7 +69,7 @@ def contrast_exp(rs_model, p, q, data):
 def random_contrast_exp(p, q):
     # randomly shuffle all the different features between p and q
     diff_features = get_diff_features(p, q)
-    diff_features = [f for f in diff_features if f not in unrelevent_features]
+    diff_features = [f for f in diff_features if f not in irrelevant_features]
     random.shuffle(diff_features)
 
     return diff_features
@@ -91,7 +91,7 @@ def lr_contrast_exp(user_data, user_ratings):
     features_weights = dict(zip(features, weights))
     features_weights = sorted(features_weights.items(), key=lambda x: x[1], reverse=True)
     sorted_features = list(map(lambda x: x[0], features_weights))
-    sorted_features = [f for f in sorted_features if f not in unrelevent_features]
+    sorted_features = [f for f in sorted_features if f not in irrelevant_features]
 
     # Return features sorted from highest weight to lowest
     return sorted_features

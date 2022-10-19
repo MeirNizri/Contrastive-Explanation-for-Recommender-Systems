@@ -1,7 +1,7 @@
-from .mlp_user import mlp_user
+from .mlp import mlp_model
 from .wide_deep import wide_deep_model
 
 __all__ = [
-    "mlp_user",
+    "mlp_model",
     "wide_deep_model"
 ]

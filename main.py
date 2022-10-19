@@ -5,7 +5,7 @@ import gspread
 import pandas as pd
 
 from datasets import cellphones
-from models import mlp_user, wide_deep_model
+from models import mlp_model, wide_deep_model
 from explanations import data_util
 import explanations.items_comparison as exp
 
@@ -17,7 +17,7 @@ all_data = data.get_all_data()
 # create model
 wide_deep = wide_deep_model()
 # create flask app
-app = Flask(__name__, template_folder='template')
+app = Flask(__name__)
 CORS(app)
 
 
@@ -40,8 +40,8 @@ def get_items_to_rate():
 def survey():
     return render_template('survey.html')
 
-@app.route("/<phones_id>/<ratings>/<birth_year>/<gender>/<occupation>/")
-def get_comparison_data(phones_id, ratings, birth_year, gender, occupation):
+@app.route("/<phones_id>/<ratings>/<birth_year>/<gender>/")
+def get_comparison_data(phones_id, ratings, birth_year, gender):
     # get clean data of the cellphones rated
     phones_id = phones_id.split(",")
     phones_id = list(map(int, phones_id))
@@ -55,14 +55,14 @@ def get_comparison_data(phones_id, ratings, birth_year, gender, occupation):
     if model_type == "wide_deep":
         model = wide_deep
     elif model_type == "mlp":
-        model = mlp_user(phones_data, ratings)
+        model = mlp_model(phones_data, ratings, all_data)
 
     # get cellphone with max rating prediction
     phones_not_rated = clean_data.loc[clean_data.index.drop(phones_data.index)]
+    phones_not_rated['user_id'] = -1
     phones_not_rated['age'] = 2022 - int(birth_year)
     phones_not_rated['gender'] = 0 if gender == "Female" else 1
     phones_not_rated['occupation'] = 0
-    phones_not_rated['user_id'] = -1
     predictions = model.predict(phones_not_rated)
     recommended_item = phones_not_rated.iloc[predictions.argmax()]
     recommended_item_raw = cellphones_data.loc[recommended_item.name]
@@ -94,21 +94,21 @@ def get_comparison_data(phones_id, ratings, birth_year, gender, occupation):
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-
-@app.route("/<age>/<gender>/<occupation>/<phones_id>/<ratings>/<recommended_phone>/<random_phone>/<our_exp>/")
-def add_new_user(age, gender, occupation, phones_id, ratings, recommended_phone, random_phone, our_exp):
+@app.route("/<age>/<gender>/<occupation>/<phones_id>/<ratings>/<explanations>/<recommended_phone>/<random_phone>/<our_exp>/")
+def add_new_user(age, gender, occupation, phones_id, ratings, explanations, recommended_phone, random_phone, our_exp):
     # get clean data of the cellphones rated
     phones_id = phones_id.split(",")
     phones_id = list(map(int, phones_id))
     # convert ratings to array of integers
     ratings = ratings.split(",")
     ratings = list(map(int, ratings))
+    explanations = explanations.split(",")
 
     # connect to google sheet
-    account = gspread.service_account(filename='datasets\contrastive-explanation-for-rs-41f703512db2.json')
+    account = gspread.service_account(filename='datasets/contrast-explanation-rs-5731512d8ac1.json')
     spreadsheet = account.open("cellphones ratings")
-    ratings_sheet = spreadsheet.worksheet("ratings")
-    users_sheet = spreadsheet.worksheet("users")
+    ratings_sheet = spreadsheet.worksheet("survey_ratings")
+    users_sheet = spreadsheet.worksheet("survey_users")
 
     # add rating data to the sheet
     rating_data = pd.DataFrame(ratings_sheet.get_all_records())
@@ -120,6 +120,7 @@ def add_new_user(age, gender, occupation, phones_id, ratings, recommended_phone,
         'user id': [new_user_id] * len(ratings),
         'cellphone id': phones_id,
         'rating': ratings,
+        'explanations': explanations,
         'datetime': str(datetime.now())})
     rating_data = pd.concat([rating_data, new_rating_data])
     ratings_sheet.update([rating_data.columns.values.tolist()] + rating_data.values.tolist())

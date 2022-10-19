@@ -91,7 +91,7 @@ class cellphones(object):
         #     user_x = pd.DataFrame([row] * len(items_id)).reset_index()
         #     items_x = self.clean_data.loc[items_id].reset_index()
         #     items_y = items_rated[['rating']].reset_index(drop=True)
-        #     user_items = pd.concat([user_x, items_x, items_y], axis=1)
+        #     user_items = pd.concat([items_x, user_x, items_y], axis=1)
         #     self.all_data = pd.concat([self.all_data, user_items])
 
         # self.all_data.reset_index(drop=True, inplace=True)
