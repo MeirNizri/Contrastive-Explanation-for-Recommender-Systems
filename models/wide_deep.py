@@ -3,6 +3,7 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from tempfile import TemporaryDirectory
 import numpy as np
+import tensorflow as tf
 
 from datasets import cellphones
 
@@ -32,7 +33,7 @@ class wide_deep_model:
 
         # Hyperparameters
         MODEL_TYPE = 'wide_deep'
-        STEPS = 5000  # Number of batches to train
+        STEPS = 80000  # Number of batches to train
         BATCH_SIZE = 32
         # Wide (linear) model hyperparameters
         LINEAR_OPTIMIZER = 'adagrad'
@@ -106,7 +107,7 @@ class wide_deep_model:
             dnn_dropout=DNN_DROPOUT,
             dnn_batch_norm=(DNN_BATCH_NORM == 1),
             log_every_n_iter=max(1, STEPS // 10),  # log 10 times
-            save_checkpoints_steps=max(1, STEPS // 10),
+            save_checkpoints_steps=max(1, STEPS // 30),
             seed=RANDOM_SEED
         )
 
@@ -128,7 +129,7 @@ class wide_deep_model:
         )
 
         print(f"Training steps = {STEPS}, Batch size = {BATCH_SIZE} (num epochs = {(STEPS*BATCH_SIZE) // len(train)})")
-        # tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
+        tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.INFO)
 
         self.wide_deep_model.train(
             input_fn=train_fn,

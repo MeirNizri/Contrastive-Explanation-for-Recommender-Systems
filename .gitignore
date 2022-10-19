@@ -3,6 +3,7 @@ __pycache__
 .gcloudignore
 app.yaml
 .vscode
+.venv
 explanations\__pycache__
 datasets\__pycache__
 models\__pycache__

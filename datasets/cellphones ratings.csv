@@ -1,931 +1,371 @@
-﻿user_id,cellphone_id,rating
-0,14,5
-0,3,4
-0,7,2
-0,27,4
-0,21,5
-0,10,3
-0,26,5
-0,9,4
-0,15,6
-0,0,5
-1,27,6
-1,5,7
-1,23,7
-1,7,6
-1,4,7
-1,15,8
-1,18,8
-1,9,7
-1,6,8
-1,11,7
-2,25,5
-2,11,4
-2,12,7
-2,2,8
-2,14,5
-2,26,4
-2,15,5
-2,3,8
-2,19,7
-2,27,6
-3,31,9
-3,14,6
-3,25,8
-3,3,4
-3,5,7
-3,28,2
-3,6,3
-3,21,6
-3,17,7
-3,29,9
-4,10,6
-4,21,3
-4,12,7
-4,2,6
-4,8,9
-4,16,4
-4,9,6
-4,15,8
-4,11,6
-4,25,9
-5,18,9
-5,19,8
-5,11,7
-5,31,8
-5,26,7
-5,1,6
-5,14,8
-5,5,9
-5,27,7
-5,12,6
-6,26,5
-6,19,4
-6,24,5
-6,1,6
-6,31,4
-6,15,6
-6,11,1
-6,21,2
-6,3,8
-6,6,10
-7,7,4
-7,3,5
-7,26,2
-7,24,2
-7,17,6
-7,11,5
-7,23,9
-7,6,4
-7,16,3
-7,15,8
-8,25,10
-8,8,5
-8,27,6
-8,11,8
-8,16,8
-8,14,7
-8,26,7
-8,30,6
-8,20,4
-8,21,7
-9,7,1
-9,29,9
-9,17,6
-9,4,1
-9,31,0
-9,3,1
-9,19,9
-9,30,1
-9,27,9
-9,12,5
-10,19,2
-10,16,4
-10,14,6
-10,5,5
-10,8,1
-10,22,2
-10,24,3
-10,7,4
-10,6,5
-10,13,8
-11,26,1
-11,5,1
-11,4,1
-11,19,4
-11,28,1
-11,15,8
-11,13,5
-11,18,4
-11,32,6
-11,11,7
-12,6,5
-12,25,1
-12,1,6
-12,23,4
-12,21,1
-12,31,1
-12,30,1
-12,3,9
-12,11,8
-12,15,6
-13,4,1
-13,24,1
-13,22,1
-13,1,1
-13,16,10
-13,23,1
-13,17,10
-13,26,1
-13,9,1
-13,27,1
-14,2,3
-14,16,1
-14,14,1
-14,10,9
-14,11,10
-14,21,1
-14,1,2
-14,20,1
-14,26,1
-14,24,1
-15,23,10
-15,22,10
-15,8,6
-15,31,3
-15,0,6
-15,1,8
-15,12,9
-15,9,6
-15,2,7
-15,16,9
-16,7,8
-16,10,7
-16,29,5
-16,9,4
-16,16,7
-16,30,3
-16,20,5
-16,2,7
-16,3,3
-16,4,8
-17,27,8
-17,25,6
-17,24,7
-17,21,5
-17,14,7
-17,26,4
-17,6,3
-17,11,5
-17,20,6
-17,8,5
-18,7,1
-18,24,2
-18,1,8
-18,10,5
-18,18,7
-18,23,5
-18,17,3
-18,30,1
-18,25,5
-18,14,1
-19,9,2
-19,12,8
-19,19,4
-19,15,2
-19,26,7
-19,6,3
-19,11,2
-19,20,8
-19,16,3
-19,18,5
-20,21,9
-20,29,7
-20,2,4
-20,27,7
-20,20,3
-20,15,7
-20,22,4
-20,26,5
-20,24,3
-20,9,7
-21,23,6
-21,22,5
-21,19,4
-21,4,3
-21,10,2
-21,2,1
-21,24,3
-21,20,8
-21,6,9
-21,31,4
-22,31,9
-22,0,8
-22,16,5
-22,11,7
-22,5,8
-22,7,8
-22,17,8
-22,15,7
-22,29,5
-22,2,6
-23,8,4
-23,27,4
-23,0,7
-23,13,8
-23,28,2
-23,9,2
-23,31,3
-23,4,9
-23,17,10
-23,16,10
-24,30,8
-24,22,7
-24,12,7
-24,27,6
-24,4,10
-24,9,8
-24,21,6
-24,16,7
-24,10,8
-24,6,8
-25,18,1
-25,1,1
-25,31,1
-25,10,4
-25,19,1
-25,5,1
-25,26,1
-25,24,1
-25,29,1
-25,13,4
-26,19,9
-26,30,2
-26,20,9
-26,14,3
-26,9,9
-26,5,4
-26,4,5
-26,23,10
-26,29,10
-26,15,3
-27,14,1
-27,28,1
-27,4,1
-27,11,1
-27,6,1
-27,22,3
-27,8,1
-27,23,3
-27,18,5
-27,30,3
-28,21,3
-28,10,7
-28,14,7
-28,19,3
-28,23,1
-28,11,8
-28,13,6
-28,26,4
-28,12,6
-28,15,9
-29,28,8
-29,10,9
-29,0,3
-29,14,7
-29,20,10
-29,31,7
-29,3,4
-29,5,3
-29,6,8
-29,12,7
-30,31,6
-30,0,10
-30,9,9
-30,15,10
-30,25,8
-30,10,10
-30,14,10
-30,26,10
-30,18,8
-30,8,7
-31,32,3
-31,7,4
-31,22,5
-31,20,4
-31,21,3
-31,19,4
-31,18,4
-31,28,3
-31,14,3
-31,15,4
-32,21,5
-32,12,6
-32,7,5
-32,0,7
-32,19,5
-32,30,5
-32,23,5
-32,29,4
-32,17,4
-32,2,6
-33,2,7
-33,1,4
-33,32,2
-33,0,6
-33,7,2
-33,6,3
-33,4,9
-33,14,9
-33,23,7
-33,24,1
-34,20,10
-34,21,9
-34,2,5
-34,23,10
-34,5,5
-34,17,8
-34,7,8
-34,31,6
-34,30,6
-34,16,4
-35,1,9
-35,14,9
-35,20,8
-35,28,8
-35,18,9
-35,17,9
-35,21,9
-35,8,9
-35,13,9
-35,25,9
-36,19,7
-36,1,9
-36,7,5
-36,31,5
-36,22,7
-36,3,8
-36,18,8
-36,24,7
-36,28,7
-36,27,7
-37,26,9
-37,31,2
-37,19,9
-37,24,8
-37,16,8
-37,30,3
-37,4,10
-37,0,8
-37,13,9
-37,28,10
-38,26,9
-38,16,8
-38,17,9
-38,5,7
-38,9,8
-38,29,9
-38,10,8
-38,3,8
-38,24,9
-38,15,8
-39,7,5
-39,1,10
-39,8,5
-39,32,2
-39,17,6
-39,14,5
-39,31,2
-39,23,8
-39,21,10
-39,28,5
-40,11,8
-40,1,6
-40,32,3
-40,30,3
-40,31,3
-40,10,9
-40,0,7
-40,24,3
-40,28,2
-40,5,3
-41,0,10
-41,5,7
-41,22,10
-41,16,15
-41,2,5
-41,15,17
-41,32,20
-41,12,15
-41,30,12
-41,4,10
-42,8,9
-42,23,8
-42,28,8
-42,16,9
-42,2,9
-42,3,10
-42,21,10
-42,26,8
-42,27,8
-42,18,10
-43,11,4
-43,19,3
-43,4,2
-43,18,4
-43,2,5
-43,29,2
-43,13,4
-43,10,2
-43,21,3
-43,31,4
-44,5,7
-44,15,6
-44,16,5
-44,4,7
-44,0,8
-44,26,7
-44,30,5
-44,31,7
-44,8,8
-44,11,7
-45,5,6
-45,30,9
-45,17,7
-45,18,5
-45,7,6
-45,11,7
-45,2,6
-45,4,5
-45,27,6
-45,32,7
-46,28,8
-46,7,7
-46,2,9
-46,21,5
-46,13,6
-46,8,7
-46,5,4
-46,27,5
-46,12,8
-46,29,9
-47,32,5
-47,29,6
-47,8,8
-47,21,7
-47,25,5
-47,15,4
-47,17,5
-47,10,8
-47,9,4
-47,22,5
-48,12,9
-48,31,8
-48,13,7
-48,14,6
-48,19,7
-48,16,8
-48,7,9
-48,6,8
-48,4,9
-48,1,10
-49,5,9
-49,29,8
-49,27,7
-49,25,8
-49,17,7
-49,0,8
-49,18,5
-49,13,5
-49,28,3
-49,12,4
-50,16,7
-50,24,8
-50,0,7
-50,7,8
-50,31,8
-50,22,7
-50,21,9
-50,3,8
-50,17,7
-50,2,8
-51,31,6
-51,25,7
-51,7,9
-51,15,5
-51,0,6
-51,12,7
-51,21,9
-51,32,8
-51,26,9
-51,20,7
-52,30,9
-52,28,8
-52,27,8
-52,1,7
-52,19,7
-52,6,6
-52,18,8
-52,17,9
-52,4,7
-52,3,8
-53,22,5
-53,4,8
-53,32,6
-53,6,7
-53,28,5
-53,27,8
-53,2,4
-53,30,6
-53,29,5
-53,23,8
-54,25,5
-54,8,9
-54,28,8
-54,18,6
-54,23,5
-54,2,4
-54,17,7
-54,32,9
-54,21,8
-54,16,5
-55,27,8
-55,26,7
-55,16,8
-55,12,7
-55,32,8
-55,6,9
-55,0,10
-55,21,7
-55,8,8
-55,10,9
-56,9,7
-56,31,8
-56,29,7
-56,6,8
-56,10,9
-56,12,7
-56,11,8
-56,8,7
-56,16,7
-56,21,6
-57,10,5
-57,1,8
-57,30,9
-57,3,6
-57,21,5
-57,9,4
-57,24,8
-57,17,9
-57,0,7
-57,4,5
-58,22,10
-58,2,10
-58,10,10
-58,32,10
-58,8,9
-58,29,8
-58,23,10
-58,7,10
-58,14,10
-58,16,10
-59,31,1
-59,19,5
-59,25,6
-59,17,9
-59,16,7
-59,22,10
-59,32,3
-59,30,2
-59,5,4
-59,12,8
-60,25,5
-60,2,8
-60,28,9
-60,22,6
-60,19,5
-60,18,8
-60,30,9
-60,3,7
-60,27,6
-60,8,5
-61,6,9
-61,13,9
-61,3,10
-61,14,8
-61,12,7
-61,20,6
-61,23,4
-61,25,1
-61,2,8
-61,8,9
-62,10,8
-62,3,7
-62,27,6
-62,9,8
-62,1,9
-62,28,8
-62,5,7
-62,26,8
-62,15,6
-62,0,8
-63,26,6
-63,13,6
-63,28,8
-63,27,7
-63,5,10
-63,3,9
-63,1,8
-63,9,8
-63,19,7
-63,15,6
-64,16,8
-64,21,8
-64,25,9
-64,23,8
-64,1,7
-64,13,8
-64,26,8
-64,3,7
-64,27,7
-64,24,8
-65,26,7
-65,14,6
-65,21,3
-65,17,8
-65,18,5
-65,5,7
-65,27,3
-65,32,6
-65,29,5
-65,1,7
-66,19,3
-66,11,5
-66,3,5
-66,7,4
-66,14,5
-66,1,5
-66,22,3
-66,13,4
-66,24,3
-66,2,4
-67,22,1
-67,3,1
-67,31,8
-67,26,5
-67,17,7
-67,28,4
-67,11,9
-67,1,1
-67,6,7
-67,32,8
-68,32,5
-68,22,3
-68,14,1
-68,0,10
-68,11,2
-68,10,5
-68,24,6
-68,2,7
-68,17,6
-68,15,7
-69,0,5
-69,24,3
-69,13,8
-69,10,7
-69,30,2
-69,9,5
-69,6,4
-69,12,7
-69,32,6
-69,18,3
-70,5,9
-70,21,7
-70,20,8
-70,11,9
-70,23,6
-70,27,6
-70,19,8
-70,30,6
-70,29,6
-70,2,9
-71,5,7
-71,0,6
-71,22,4
-71,2,8
-71,30,4
-71,7,4
-71,14,5
-71,16,5
-71,8,4
-71,6,4
-72,28,8
-72,0,9
-72,16,9
-72,29,7
-72,7,7
-72,31,6
-72,2,9
-72,11,7
-72,3,9
-72,32,6
-73,6,6
-73,8,8
-73,28,8
-73,32,6
-73,7,8
-73,22,7
-73,18,8
-73,14,8
-73,5,9
-73,2,9
-74,32,1
-74,24,1
-74,18,4
-74,15,6
-74,8,3
-74,10,8
-74,4,8
-74,6,7
-74,13,5
-74,9,4
-75,9,8
-75,29,7
-75,18,5
-75,17,9
-75,8,8
-75,28,6
-75,19,8
-75,1,7
-75,23,8
-75,0,6
-76,26,8
-76,31,9
-76,25,7
-76,14,5
-76,20,6
-76,30,9
-76,9,8
-76,8,7
-76,19,8
-76,4,7
-77,0,2
-77,13,3
-77,29,2
-77,6,5
-77,21,6
-77,5,4
-77,15,7
-77,19,5
-77,16,6
-77,18,7
-78,10,9
-78,23,9
-78,31,4
-78,21,7
-78,7,4
-78,8,5
-78,22,6
-78,26,6
-78,2,5
-78,19,7
-79,28,8
-79,4,9
-79,8,6
-79,10,7
-79,19,9
-79,17,7
-79,5,5
-79,22,9
-79,31,10
-79,9,9
-80,27,1
-80,1,9
-80,7,7
-80,15,8
-80,17,8
-80,29,5
-80,24,3
-80,6,7
-80,9,7
-80,11,8
-81,32,7
-81,2,9
-81,28,7
-81,0,9
-81,23,8
-81,26,8
-81,20,9
-81,8,7
-81,18,9
-81,16,8
-82,9,2
-82,28,6
-82,3,7
-82,16,6
-82,6,0
-82,22,7
-82,4,7
-82,10,9
-82,0,6
-82,7,3
-83,24,7
-83,16,8
-83,3,8
-83,26,8
-83,15,7
-83,30,7
-83,29,7
-83,2,7
-83,9,6
-83,14,7
-84,16,2
-84,3,8
-84,7,7
-84,4,9
-84,24,1
-84,18,7
-84,12,8
-84,11,8
-84,30,5
-84,1,9
-85,6,8
-85,30,9
-85,10,7
-85,5,8
-85,2,9
-85,17,8
-85,26,5
-85,18,7
-85,25,6
-85,19,9
-86,12,8
-86,19,9
-86,4,5
-86,28,6
-86,23,7
-86,8,8
-86,2,4
-86,21,9
-86,7,6
-86,24,8
-87,2,9
-87,13,8
-87,15,7
-87,26,8
-87,17,7
-87,28,9
-87,30,6
-87,6,8
-87,32,6
-87,14,8
-88,10,7
-88,8,8
-88,16,5
-88,29,5
-88,17,6
-88,23,6
-88,31,7
-88,7,5
-88,0,6
-88,1,7
-89,6,7
-89,15,7
-89,31,5
-89,23,4
-89,29,5
-89,12,8
-89,0,3
-89,16,6
-89,5,2
-89,30,6
-90,22,6
-90,25,7
-90,19,10
-90,23,7
-90,13,10
-90,4,10
-90,28,4
-90,2,10
-90,8,10
-90,11,8
-91,25,2
-91,0,2
-91,8,3
-91,24,7
-91,29,1
-91,20,1
-91,7,5
-91,2,1
-91,4,1
-91,17,1
-92,22,8
-92,1,10
-92,12,9
-92,4,10
-92,24,9
-92,30,8
-92,8,9
-92,11,9
-92,9,9
-92,21,8
+﻿user_id,cellphone_id,rating,explanations
+0,30,1,The mega pixie is too dull
+0,5,3,old model
+0,10,9,Big ram size
+0,9,3,low performance
+0,23,2,Not a fan of the brand
+0,8,2,low internal memory
+0,22,1,not a fan of the brand
+0,16,2,low camera quality
+0,19,1,not a fan of brand
+0,3,10,Great OS and internal memory
+1,7,8,best life 
+1,31,7,well clear disply
+1,18,5,not sure
+1,3,10,good one best all features
+1,32,6,same but best battery life
+1,28,8,good cameraview
+1,16,7,net bradcast is good
+1,15,8,good net connection
+1,4,7,well life and style
+1,8,8,well life capacity
+6,13,5,The ram is good
+6,31,6,I like the performance
+6,23,8,The battery size is good
+6,1,2,the model and the performance too good
+6,8,7,picture quality
+6,19,1,the main camera is too good
+6,32,10,the price was not good
+6,7,9,good internal memory
+6,27,4,the selfie camera is perfect
+6,16,3,the model i like very much
+8,29,6,Price was low
+8,22,9,High Memory
+8,32,9,Latest Model
+8,25,8,High Memory
+8,20,7,High RAm
+8,0,5,High Memory
+8,11,6,High Memory
+8,17,8,High Memory
+8,21,5,High Ram
+8,27,8,High Memory
+10,23,9,internal memory
+10,5,3,memory too low
+10,6,7,okay memory size
+10,4,9,lots of memory
+10,14,10,favorite brand and great memory
+10,3,9,nice memory
+10,12,8,memory good
+10,16,8,okay memory
+10,27,8,good phone size
+10,11,8,good screen size
+12,24,4,less specification
+12,10,9,better touch screen
+12,16,7,better usage
+12,13,6,better display
+12,6,6,lesser weight
+12,32,5,android usage
+12,27,4,camera better
+12,20,7,selfie camera better
+12,31,3,lesser memory
+12,23,6,bigger display
+16,15,10,i have a pxl 3 and love it
+16,24,3,good brand but no nothing
+16,0,1,i fucking hate apple
+16,30,2,hate moto
+16,27,4,maybe 
+16,11,8,very good choice
+16,26,5,seems ok
+16,13,7,good choice
+16,9,6,trusted brand
+16,6,2,no clue
+24,20,9,normal acess
+24,28,8,different apps
+24,3,10,high quality
+24,21,8,different useage
+24,22,7,normal type
+24,6,7,different useage
+24,18,8,different  app
+24,10,9,very nice to use
+24,23,7,normal acess
+24,15,10,hihg quality
+25,2,9,Worth mobile
+25,5,6,reasonable price
+25,14,2,Price too high
+25,30,5,reasonable price
+25,12,3,price too high
+25,32,9,Worth product
+25,8,10,Excellent price
+25,13,1,waste
+25,16,9,good buy
+25,20,5,Average
+26,20,6,netural
+26,32,9,good company and easy to use
+26,3,10,very good features
+26,15,7,netural
+26,23,6,very new and attractive model
+26,25,9,easy to handle
+26,22,10,good features and very easy to sue
+26,12,8,branded
+26,18,5,neutral
+26,4,9,very good features
+27,11,8,Good camera
+27,8,8,Budget one
+27,19,6,do not full
+27,24,7,This is best for first time user
+27,27,7,This is good for gaming
+27,18,6,not good to buy
+27,6,8,This is good for a game
+27,21,9,Powerful processor
+27,32,8,stack experience
+27,4,10,cinematic camera
+28,28,1,I only buy iPhone. 
+28,31,1,I hate Android. 
+28,5,10,This is the only way to go! 
+28,8,1,Android is a joke. 
+28,14,1,Not built to last. 
+28,17,1,These phones are cheap. 
+28,22,1,Not my kind of phone
+28,29,1,I would never buy this!
+28,3,10,I always choose iPhone!
+28,25,1,Not my cup of tea at all! 
+29,14,5,way overpriced!
+29,8,7,reasonably priced but limited in quality
+29,19,5,unfamiliar with brand
+29,10,9,would be a top consideration
+29,7,6,limited RAM in not beneficial
+29,24,8,priced right!
+29,2,6,I prefer something more recent
+29,16,7,would definitely consider
+29,26,5,price is too high
+29,5,4,too old (many functions obsolete
+30,17,8,cheaper with cool features
+30,14,6,smaller selfie camera
+30,19,7,cheap and affordable
+30,15,6,affordable
+30,26,9,good overall balanced features
+30,9,4,poor performance
+30,0,4,smaller battery size
+30,16,8,cheap and affordable
+30,4,7,balanced features but it is expensive
+30,2,5,smaller RAM
+32,12,1,too expensive
+32,2,9,lightweight and popular brand
+32,13,1,too expensive
+32,26,9,high performance and strong camera specs
+32,11,1,too expensive
+32,31,3,inexpensive but very weak
+32,20,2,I never heard of this brand
+32,30,1,inexpensive but very weak
+32,6,2,too expensive for such weak specs
+32,10,8,reasonable price for decent specs
+33,30,10,Batery
+33,29,9,Batery
+33,13,8,Ram and Rom
+33,6,8,Camera
+33,2,10,Brand
+33,19,10,Brand
+33,9,10,camera
+33,10,10,Ram
+33,25,10,Camera
+33,32,8,Rom
+35,19,7,good price
+35,12,2,high price
+35,26,2,high price
+35,17,3,medium high price
+35,23,2,high price
+35,0,6,good price
+35,18,9,very cheap price
+35,27,7,good price
+35,6,5,medium high price
+35,4,1,very over priced
+36,2,10,like apple and this model
+36,26,1,not familiar with brand
+36,6,1,not familiar with brand
+36,1,6,don't want a mini but like apple
+36,5,6,not big enough memory
+36,10,4,not an android fan
+36,22,4,not familiar with brand
+36,14,1,don't want a folding phone
+36,9,4,android not my 1st choice
+36,17,2,google 3rd on my list
+37,24,6,due to performance 
+37,32,5,due to camera
+37,28,10,due to ram
+37,7,1,due to ram
+37,18,5,due to camera
+37,31,2,due to ram
+37,23,9,due to gb
+37,30,1,due to gb
+37,13,5,due to ram
+37,15,5,due to ram
+38,1,7,comfort
+38,30,4,reliable
+38,5,8,camera quality best
+38,24,7,best perfomance
+38,10,7,branded
+38,15,2,not much
+38,2,8,high quality
+38,11,7,perfome 
+38,6,5,average
+38,25,6,good port
+52,20,10,it was very highest performance
+52,0,5,it was very big screen size
+52,13,4,it was a high internal memory
+52,27,6,ram was acceptble
+52,26,8,price was acceptable
+52,8,1,screen size was comfortable
+52,5,2,selfie camera was very nice
+52,3,2,internal memory was very high
+52,24,5,it was very high battery size
+52,15,5,very high main camera size
+53,32,9,very likly
+53,5,8,save battery
+53,15,10,save battery
+53,4,9,clear camara
+53,26,9,clear camara
+53,9,8,low price
+53,7,8,best screen size
+53,29,8,good perfomence
+53,25,9,good life
+53,17,8,good life
+56,15,5,GOOD
+56,32,3,VERY USEFULL
+56,30,2,MP LEVEL HIGH
+56,5,9,very quality
+56,25,3,better
+56,1,9,storage
+56,12,5,quality
+56,8,10,very nice
+56,17,6,good
+56,13,9,very well
+60,16,6,The screen size is amazing
+60,11,3,The performance wise it is good
+60,32,8,The model and price is cheap
+60,9,5,The main camera MP is too clear
+60,28,1,THe price is rich in quality 
+60,26,9,The RAM wise cheap
+60,15,4,The weight was more than 150g
+60,31,10,Very low cost
+60,13,2,THe internal memory is more than 100 GB
+60,29,7,THe battery size is nice than others
+74,26,8,Trend Model
+74,25,7,High Memory
+74,17,7,High Ram
+74,11,8,Good Brand
+74,21,7,Good performance
+74,8,6,Good Brand
+74,30,6,Low price
+74,28,7,Very high Memory
+74,32,7,Latest model
+74,16,6,High Memory
+79,16,8,Very high memory
+79,11,8,Good brand
+79,19,7,Latest model
+79,10,8,High performance
+79,3,9,Very high memory
+79,23,8,Very high memory
+79,32,7,Big Battery size
+79,31,5,Low price
+79,14,7,Very high memory
+79,5,6,Good brand
+80,7,8,brand
+80,19,7,storage
+80,30,8,quality
+80,9,9,brand
+80,28,9,price
+80,31,8,storage
+80,22,10,quality
+80,5,7,camera
+80,8,8,quality
+80,2,9,storage
+84,25,1,don't know the bran
+84,2,10,they make reliable hardware
+84,31,9,Ive had good experiences in the past with their products
+84,28,10,their hardware has always worked very well
+84,21,1,never heard of this brand
+84,7,10,I am loyal to samsung
+84,30,9,Motorola is reliable and dependable
+84,14,10,Samsung's product are great
+84,17,9,My friend has recommended the google pixel to me
+84,26,1,Don't know or trust this brand
+85,18,1,I will never use an Android.
+85,30,1,Androids are not built to last.
+85,25,1,Androids are a joke and not even worth buying.
+85,1,10,Apple products are always promising.
+85,15,1,Androids are poorly made.
+85,2,10,iPhones are such great products that work with everything!
+85,4,10,I will always choose iPhones because they help my life function.
+85,14,1,Androids are poorly made and always break.
+85,17,1,Androids are always falling apart.
+85,21,1,Androids are not superior and always a mess.
+91,31,8,very good price range
+91,16,7,good camera quality but all others feature are low
+91,1,9,its had power full processor
+91,2,9,high range mobile with quality
+91,15,6,excellent phone for camera lover
+91,22,5,its need to improve more
+91,19,8,overall good product and fine performance
+91,21,8,impressive mobile and its had good price
+91,12,9,very high quality mobile
+91,11,7,good mobile with high resolution features
+95,17,9,Stable software
+95,22,10,Durability
+95,30,5,Good camera
+95,25,9,reliability
+95,29,6,Quality
+95,27,7,Good Display
+95,6,7,Good camera
+95,32,4,Durability
+95,15,5,reliability
+95,5,5,Stable
+98,0,10,storage
+98,2,9,quality
+98,12,9,brand
+98,20,7,color
+98,24,8,memory
+98,8,9,brand
+98,9,8,storage
+98,32,6,size
+98,10,9,brand
+98,7,8,battery
+99,17,10,pixel camera
+99,26,9,full hd
+99,13,10,without taking more space
+99,22,10,3d structured light
+99,21,9,load multiple application
+99,4,10,lightning connector
+99,8,9,reliable processor
+99,3,10,biggest pro camera
+99,25,10,leading computational videography
+99,30,10,multi day battery life
+100,20,10,good result given
+100,27,9,it had a high ram
+100,24,8,low price better experience
+100,30,8,budget friendly
+100,29,8,high quality
+100,8,10,best result
+100,26,8,long time usage
+100,7,9,friendly budget for all people
+100,13,10,high experience
+100,10,9,clear camera
+104,30,6,like it
+104,24,7,speed is good
+104,13,8,love it
+104,12,9,network speed
+104,15,8,communication is easy
+104,11,10,faster
+104,28,10,speeder
+104,31,10,good
+104,27,8,like
+104,16,10,good one
+105,17,8,brand
+105,18,7,storage
+105,4,10,quality
+105,19,6,memory
+105,9,8,size
+105,12,9,colour
+105,14,9,reviews
+105,22,8,storage
+105,7,9,brand
+105,20,10,color
+106,24,7,User friendly
+106,20,6,easy to use
+106,15,7,cost effective
+106,14,8,good features
+106,4,6,effective apps
+106,26,7,good features
+106,18,5,fine
+106,5,6,good
+106,12,8,good
+106,16,7,excellent

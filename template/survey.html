@@ -187,8 +187,8 @@
     var fails = 0
     var phones_id = " "
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://contrast-explanation-rs-survey.uc.r.appspot.com/");
-    //xhr.open("GET", "http://127.0.0.1:8080/");
+    //xhr.open("GET", "https://contrast-explanation-rs-survey.uc.r.appspot.com/");
+    xhr.open("GET", "http://127.0.0.1:8080/");
     xhr.send();
     
     //triggered when the response is completed
@@ -238,9 +238,11 @@
             dataLoad.style.display = "block";
             failure.style.display = "none";
 
+            // wide_deep / mlp / melu
+            var model = "wide_deep";
             const xhr1 = new XMLHttpRequest();
-            xhr1.open("GET", "https://contrast-explanation-rs-survey.uc.r.appspot.com/"+phones_id+"/"+rating+"/"+year.value+"/"+gender.value+"/");
-            //xhr1.open("GET", "http://127.0.0.1:8080/"+phones_id+"/"+rating+"/"+year.value+"/"+gender.value+"/");
+            //xhr1.open("GET", "https://contrast-explanation-rs-survey.uc.r.appspot.com/"+model+"/"+phones_id+"/"+rating+"/"+year.value+"/"+gender.value+"/");
+            xhr1.open("GET", "http://127.0.0.1:8080/"+model+"/"+phones_id+"/"+rating+"/"+year.value+"/"+gender.value+"/");
             xhr1.send();
             
             //triggered when the response is completed
@@ -323,8 +325,8 @@
         if (occupation.value == "") occupation_ = "null";
 
         const xhr2 = new XMLHttpRequest();
-        xhr2.open("GET", "https://contrast-explanation-rs-survey.uc.r.appspot.com/"+year_+"/"+gender_+"/"+occupation_+"/"+phones_id+"/"+ratings+"/"+explanations+"/"+recommendedItem+"/"+randomItem+"/"+ourExp+"/");
-        //xhr2.open("GET", "http://127.0.0.1:8080/"+year_+"/"+gender_+"/"+occupation_+"/"+phones_id+"/"+ratings+"/"+explanations+"/"+recommendedItem+"/"+randomItem+"/"+ourExp+"/");
+        //xhr2.open("GET", "https://contrast-explanation-rs-survey.uc.r.appspot.com/"+year_+"/"+gender_+"/"+occupation_+"/"+phones_id+"/"+ratings+"/"+explanations+"/"+recommendedItem+"/"+randomItem+"/"+ourExp+"/");
+        xhr2.open("GET", "http://127.0.0.1:8080/"+year_+"/"+gender_+"/"+occupation_+"/"+phones_id+"/"+ratings+"/"+explanations+"/"+recommendedItem+"/"+randomItem+"/"+ourExp+"/");
         xhr2.send();
     }
 

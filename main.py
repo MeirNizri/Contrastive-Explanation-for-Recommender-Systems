@@ -40,8 +40,8 @@ def get_items_to_rate():
 def survey():
     return render_template('survey.html')
 
-@app.route("/<phones_id>/<ratings>/<birth_year>/<gender>/")
-def get_comparison_data(phones_id, ratings, birth_year, gender):
+@app.route("/<model>/<phones_id>/<ratings>/<birth_year>/<gender>/")
+def get_comparison_data(model, phones_id, ratings, birth_year, gender):
     # get clean data of the cellphones rated
     phones_id = phones_id.split(",")
     phones_id = list(map(int, phones_id))
@@ -51,11 +51,10 @@ def get_comparison_data(phones_id, ratings, birth_year, gender):
     ratings = list(map(int, ratings))
 
     # train Model
-    model_type = "wide_deep"
-    if model_type == "wide_deep":
-        model = wide_deep
-    elif model_type == "mlp":
+    if model == "mlp":
         model = mlp_model(phones_data, ratings, all_data)
+    else:
+        model = wide_deep
 
     # get cellphone with max rating prediction
     phones_not_rated = clean_data.loc[clean_data.index.drop(phones_data.index)]
@@ -147,5 +146,5 @@ def add_new_user(age, gender, occupation, phones_id, ratings, explanations, reco
     return response
 
 
-# if __name__ == "__main__":
-#     app.run(host="127.0.0.1", port=8080)
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=8080)
