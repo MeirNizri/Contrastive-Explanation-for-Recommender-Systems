@@ -20,8 +20,9 @@
         For each of the following cellphones, please indicate how likely you are to purchase 
         each of them at the given price, on a scale from 1 (very unlikely) to 10 (very likely).
     </h5>
-    <h5>        
-        It is important that you add <b>meaningful and different</b> explanations for every rating you provide.
+    <h5> 
+        You must add <b>meaningful</b> explanations (few words) for every rating you provide.
+        HITs without meaningful explanations may be rejected!
     </h5>
 
     <p id="emptyRating" style="color:red;">
@@ -239,7 +240,7 @@
             failure.style.display = "none";
 
             // wide_deep / mlp / melu
-            var model = "wide_deep";
+            var model = "melu";
             const xhr1 = new XMLHttpRequest();
             //xhr1.open("GET", "https://contrast-explanation-rs-survey.uc.r.appspot.com/"+model+"/"+phones_id+"/"+rating+"/"+year.value+"/"+gender.value+"/");
             xhr1.open("GET", "http://127.0.0.1:8080/"+model+"/"+phones_id+"/"+rating+"/"+year.value+"/"+gender.value+"/");
@@ -262,7 +263,7 @@
                     comparison.style.display = "block";
                 } 
                 else {
-                    if (fails < 6) {
+                    if (fails < 1) {
                         toComparison()
                         fails = fails+1
                     } else {
@@ -274,7 +275,7 @@
             }
             
             xhr1.onerror = function () {
-                if (fails < 6) {
+                if (fails < 1) {
                     toComparison()
                     fails = fails+1
                 } else {

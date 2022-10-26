@@ -14,4 +14,12 @@
 .gitignore
 README.md
 .venv
+datasets/old
+models/MeLU/train_data
+/setup.cfg
+__pycache__
+.vscode
+explanations/__pycache__
+datasets/__pycache__
+models/__pycache__
 

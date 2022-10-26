@@ -5,7 +5,11 @@ import gspread
 import pandas as pd
 
 from datasets import cellphones
-from models import mlp_model, wide_deep_model
+from models import mlp_model#, wide_deep_model
+from models.MeLU.options import cellphone_config
+from models.MeLU.model_training import training
+from models.MeLU.MeLU import MeLU
+from models.MeLU import embeddings
 from explanations import data_util
 import explanations.items_comparison as exp
 
@@ -15,7 +19,7 @@ cellphones_data = data.get_data()
 clean_data = data.get_clean_data()
 all_data = data.get_all_data()
 # create model
-wide_deep = wide_deep_model()
+# wide_deep = wide_deep_model()
 # create flask app
 app = Flask(__name__)
 CORS(app)
@@ -53,8 +57,13 @@ def get_comparison_data(model, phones_id, ratings, birth_year, gender):
     # train Model
     if model == "mlp":
         model = mlp_model(phones_data, ratings, all_data)
-    else:
-        model = wide_deep
+    elif model == "melu":
+        model = MeLU(data, cellphone_config, embeddings)
+        training(model, model_save=True)
+        user_info = [2022-int(birth_year), 0 if gender == "Female" else 1, 0]
+        model.set_user(user_info, phones_data, ratings)
+    # else:
+        # model = wide_deep
 
     # get cellphone with max rating prediction
     phones_not_rated = clean_data.loc[clean_data.index.drop(phones_data.index)]

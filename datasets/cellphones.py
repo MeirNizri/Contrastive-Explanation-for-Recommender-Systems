@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 from datetime import datetime
 
@@ -13,6 +14,7 @@ class cellphones(object):
 
         # read data
         self.cellphones_data = pd.read_csv('datasets/cellphones data.csv', index_col='cellphone_id')
+        self.users_data = pd.read_csv('datasets/cellphones users.csv', index_col='user_id')
 
         # add extension to data to make it more readable
         self.cellphones_data['internal memory'] = self.cellphones_data['internal memory'].apply(lambda x: str(x) + 'GB')
@@ -29,9 +31,9 @@ class cellphones(object):
         if self.preprocessed:
             return self
 
-        self.clean_data = pd.read_csv('datasets/cellphones data.csv')
-        self.clean_users = pd.read_csv('datasets/cellphones users.csv')
-        self.clean_ratings = pd.read_csv('datasets/cellphones ratings.csv')
+        self.clean_data = pd.read_csv('datasets/cellphones data.csv', index_col='cellphone_id')
+        self.clean_users = pd.read_csv('datasets/cellphones users.csv', index_col='user_id')
+        self.clean_ratings = pd.read_csv('datasets/cellphones ratings.csv', index_col=False)
 
         # clean items data
         self.brands = self.clean_data['brand'].unique().tolist()
@@ -44,6 +46,9 @@ class cellphones(object):
         for col in self.brands + self.os:
             self.clean_data[col] = self.clean_data[col].astype("bool")
         self.clean_data = self.clean_data.drop(columns=['brand', 'model', 'operating system'])
+        
+        self.clean_data['screen size'] = self.clean_data['screen size'].apply(lambda x: int(x*10))
+        self.clean_data['performance'] = self.clean_data['performance'].apply(lambda x: int(x*100))
 
         date_to_int = lambda date: datetime.strptime(date, '%d/%m/%Y').year
         # date_to_int = lambda date: int(datetime.strptime(date, '%b-%y').timestamp())
@@ -76,27 +81,37 @@ class cellphones(object):
             self.preprocess()
         return self.clean_users
     
+    def get_clean_ratings(self):
+        if not self.preprocessed:
+            self.preprocess()
+        return self.clean_ratings
+    
     def get_all_data(self):
-        if self.all_data is None:
-            self.all_data = pd.read_csv('datasets/all data.csv')
-
-        # if not self.preprocessed:
-        #     self.preprocess()
-            
-        # self.all_data = pd.DataFrame()
-        # for idx, row in self.clean_users.iterrows():
-        #     items_rated = self.clean_ratings.loc[self.clean_ratings['user_id'] == idx]
-        #     items_id = items_rated['cellphone_id']
-
-        #     user_x = pd.DataFrame([row] * len(items_id)).reset_index()
-        #     items_x = self.clean_data.loc[items_id].reset_index()
-        #     items_y = items_rated[['rating']].reset_index(drop=True)
-        #     user_items = pd.concat([items_x, user_x, items_y], axis=1)
-        #     self.all_data = pd.concat([self.all_data, user_items])
-
-        # self.all_data.reset_index(drop=True, inplace=True)
+        if self.all_data:
+            return self.all_data
         
-        # self.all_data.to_csv('datasets/all data.csv')
+        all_data_path = 'datasets/all data.csv'
+        if os.path.exists(all_data_path):
+            self.all_data = pd.read_csv(all_data_path)
+            return self.all_data
+
+        if not self.preprocessed:
+            self.preprocess()
+            
+        self.all_data = pd.DataFrame()
+        for idx, row in self.clean_users.iterrows():
+            items_rated = self.clean_ratings.loc[self.clean_ratings['user_id'] == idx]
+            items_id = items_rated['cellphone_id']
+
+            user_x = pd.DataFrame([row] * len(items_id)).reset_index()
+            items_x = self.clean_data.loc[items_id].reset_index()
+            items_y = items_rated[['rating']].reset_index(drop=True)
+            user_items = pd.concat([items_x, user_x, items_y], axis=1)
+            self.all_data = pd.concat([self.all_data, user_items])
+
+        self.all_data.reset_index(drop=True, inplace=True)
+        
+        self.all_data.to_csv(all_data_path)
         return self.all_data
 
     def get_name(self):

@@ -1,4 +1,4 @@
-﻿user_id,cellphone_id,rating,explanations
+user_id,cellphone_id,rating,explanations
 0,30,1,The mega pixie is too dull
 0,5,3,old model
 0,10,9,Big ram size
@@ -369,3 +369,363 @@
 106,5,6,good
 106,12,8,good
 106,16,7,excellent
+110,8,2,Small internal memory
+110,12,6,Quite possibly would buy.
+110,27,1,Never heard of the brand
+110,31,2,Small internal memory
+110,24,1,Never heard of the brand
+110,5,2,Small internal memory
+110,3,3,I don't like Apple products
+110,29,6,Would prefer the A53
+110,9,7,It's most similar to what I have now.
+110,14,1,Don't want a foldable phone
+113,14,5,I like flip and folding phones
+113,1,5,A mini might be too small to see properly
+113,29,2,I'm not sure how well this would work
+113,27,1,I've never heard of this brand
+113,3,10,IPhone is a popular brand
+113,26,1,No clue how this brand works
+113,7,10,Samsung is a very good brand
+113,21,1,I've never heard of this brand
+113,15,6,This could work well for me
+113,4,10,Apple is a good phone
+114,3,7,good performance but expensive
+114,22,8,excellent performance
+114,28,7,too expensive
+114,24,6,low storage
+114,8,6,poor performance
+114,29,6,poor performance
+114,4,7,too expensive
+114,25,8,good performance for the price
+114,12,9,good value
+114,26,8,good performance for the price
+115,7,1,The memory is very low as well as the performance.
+115,25,10,memory and performance and camera very high
+115,3,7,performance and memory high but really expensive
+115,6,7,expensive but good ratings
+115,11,9,expensive but very good ratings overall
+115,2,6,expensive for a low ram
+115,13,4,expensive and has a lower rating
+115,19,7,overall pretty good stats and a reasonable price
+115,30,5,cheap but camera quality is too low
+115,26,10,Best rating and more reasonable price than others of that quality
+119,25,8,fair price
+119,3,1,Have one excellent
+119,16,4,solid name
+119,7,5,cheap but good brand
+119,23,9,unkown brand
+119,10,3,good reputation good phone
+119,11,2,Good phone good reputation
+119,28,10,too expensive
+119,19,7,cheap price
+119,15,6,good name
+120,8,10,GOOD
+120,7,8,VERY USEFULL
+120,9,6,MP LEVEL HIGH
+120,25,5,very quality
+120,30,6,better
+120,29,10,storage
+120,17,8,quality
+120,20,8,very nice
+120,21,7,good
+120,1,7,very well
+123,24,8,User friendly
+123,14,7,easy to use
+123,19,7,cost effective
+123,3,8,good features
+123,8,7,effective apps
+123,12,8,good features
+123,29,7,good cost
+123,2,6,fine battery
+123,31,7,easy download
+123,26,7,excellent handling
+124,18,6,bettery size
+124,19,9,8GB
+124,14,8,SELFIE CAMERA
+124,13,6,SCRREN SIZE
+124,16,6,I like the performance
+124,29,8,good
+124,25,9,better
+124,6,8,quality
+124,24,7,4gb
+124,7,9,screen size
+126,14,9,high quality
+126,18,7,good appearance
+126,10,8,good nature
+126,1,7,highly recommended
+126,4,9,good view
+126,32,6,good for daily usage
+126,5,10,nice model
+126,12,10,attractive
+126,25,8,good model
+126,22,8,good features
+128,24,5,good storage
+128,14,6,nice quality
+128,8,8,quality cemera
+128,4,6,battery well storage
+128,6,5,good quality
+128,13,4,good storage
+128,23,8,good cemera power
+128,28,5,battery was nice
+128,12,5,quality good
+128,32,2,full usefully
+129,18,6,high quality
+129,4,8,affordable
+129,27,9,high rating
+129,9,10,good nature
+129,26,7,good look
+129,5,9,good nature
+129,31,7,good storage
+129,21,7,best view
+129,25,9,best model
+129,2,10,attractive
+137,1,7,high quality
+137,9,9,high rating
+137,14,9,good nature
+137,16,7,high view
+137,31,10,NATURE APPEARENCE
+137,25,8,good looking
+137,32,10,attractive
+137,22,9,good rating
+137,26,6,affordable
+137,19,6,high price
+140,6,7,good quality
+140,18,7,good product
+140,32,9,nice appeal
+140,14,8,high rating
+140,20,10,attractive
+140,19,9,nice rate
+140,11,9,good view
+140,3,8,high quality
+140,15,8,nice appear
+140,13,10,appealing
+142,31,7,User friendly
+142,22,8,easy to use
+142,12,8,cost effective
+142,17,8,good features
+142,28,7,effective apps
+142,15,7,easy to use features
+142,9,7,good cost
+142,32,8,fine battery
+142,11,6,easy download
+142,6,7,excellent handling
+143,10,8,User friendly
+143,22,8,easy to use
+143,18,7,cost effective
+143,28,7,good features
+143,4,8,effective apps
+143,32,6,easy to use features
+143,27,6,good cost
+143,19,7,fine battery
+143,13,7,easy download
+143,14,8,excellent handling
+144,30,7,this is good in terms of battery but low in internal and ram are low
+144,5,10,best in all formate
+144,28,9,good one
+144,22,7,fine but not up to the mark
+144,32,7,good
+144,15,9,very good mobile
+144,3,10,very well
+144,18,8,fine not too good
+144,8,8,good one
+144,29,7,good
+145,5,8,User friendly
+145,29,7,easy to use
+145,30,7,cost effective
+145,24,7,good features
+145,0,8,effective apps
+145,15,8,easy to use features
+145,26,7,good cost
+145,28,6,fine battery
+145,19,7,easy download
+145,10,8,excellent handling
+148,3,10,Great iOS and internal memory
+148,18,2,low performance
+148,6,4,not a fan of brand
+148,16,2,low camera quality
+148,26,5,Not a fan of the brand
+148,0,10,Big size of internal memory and light wei
+148,1,10,Big size of internal memory and light wei
+148,24,5,not a fan of the brand
+148,5,4,low internal memory
+148,2,10,Great battery size and lighter weight
+154,25,7,good quality
+154,6,9,high rating
+154,21,6,good looking
+154,13,6,best view
+154,20,6,good features
+154,30,6,useful for office
+154,4,10,attractive
+154,27,9,best features
+154,11,8,good view
+154,8,9,high quality
+156,21,8,battrey life
+156,12,9,camara perfect
+156,26,8,internal memory ib best
+156,28,8,operating systerm is good
+156,5,10,low price
+156,22,8,best battery
+156,1,10,weight less phone
+156,9,8,battery quality
+156,19,9,picture cliarance
+156,23,6,sellfi camara is clear
+160,8,1,low specs
+160,27,3,brand not trustworthy
+160,12,10,high end phone
+160,31,1,low specs
+160,7,1,low specs
+160,9,6,good price for specs
+160,6,4,brand not trustworthy
+160,20,7,good price for specs
+160,30,1,low specs
+160,18,1,low specs
+162,30,9,This products is the very high process.
+162,17,8,Good camera
+162,4,6,good specification
+162,24,8,no hanging process
+162,8,9,Good battery life.
+162,32,7,high voltage
+162,10,6,clear voice
+162,5,8,camera clearity
+162,0,7,good camera
+162,3,8,high process.
+164,26,8,RAM power was high
+164,9,6,price was cheaf
+164,2,7,iphone best condition
+164,28,8,internal memory was so high performance
+164,17,6,Pro max it is best rate
+164,4,4,that mainly clear apple iphone
+164,23,6,price that best condition
+164,7,8,32gb ram was best to high
+164,16,5,main camera was so high
+164,24,7,that lof of profit in the redmi note that cost was easy to buy
+169,31,1,The specification of this phone is outdated
+169,1,5,It has some good specification
+169,5,7,The screen size is good
+169,25,9,It has the latest technology
+169,3,10,It has a pretty good camera
+169,27,7,It is good but need some more advancement
+169,2,10,compact and has a good camera
+169,12,10,emmy@wcaltd.comery good specification loved it
+169,9,8,Very good specification
+169,26,8,outdated specification
+178,1,10,very attractive
+178,10,9,good model
+178,14,5,improive more
+178,4,10,good camera
+178,12,8,long life battery
+178,0,9,good security
+178,32,6,impove designs
+178,22,9,good starage
+178,7,10,good camera
+178,15,10,good model
+183,14,7,ram high
+183,22,6,best performance
+183,20,8,best price
+183,17,5,battery quality
+183,27,5,good main camara
+183,32,7,low price
+183,28,7,memory type
+183,30,6,low price
+183,7,6,good screen type
+183,2,8,good type
+194,10,7,WORTH FOR THE PRICE
+194,8,8,VALUABLE BATTERY POWER
+194,1,9,EXCLUSIVE BRAND AND MODEL
+194,11,5,MAIN CAMERA WAS WORTH
+194,19,4,SELFIE CAMERA IS GOOD IN SIZE
+194,18,2,PERFORMANCE LEVEL WAS WORST
+194,9,3,GOOD QUALITY
+194,22,8,OVERALL PERFROMANCE IS GOOD
+194,3,6,BRAND MODEL WAS HIGHLY RELIABLE
+194,7,8,WORTH FOR BUYING
+200,16,3,THe weight is more than 150g
+200,17,4,THe selfie camera quality is oursome
+200,30,9,RAM is very low GB
+200,20,7,The screen size is more than 5
+200,13,2,RAM was too good
+200,31,10,Very low price
+200,11,1,The price wise good
+200,32,8,Very low internal memory
+200,6,5,THe performance wise too perfect
+200,21,6,Model is too boring
+203,32,7,The perfomance wise is verylow
+203,30,9,the internal memomery is very good
+203,31,10,It is very low price
+203,29,5,The battery size is greater than others
+203,1,4,The screen size is very low
+203,8,8,The weight is more than others
+203,11,1,The perfomence wise is good
+203,13,2,The selfie camera is more than others
+203,23,3,The internal memory is more than othrs
+203,27,6,The main camera is very good
+204,19,6,BATTERY AND THE INTERNAL MEMORY WAS ACCEPTABLE
+204,24,5,BATTERY POWER WAS ACCEPTABLE
+204,12,8,IT HAS A LOWER RAM POWER
+204,30,3,PERFORMANCE SCORE WAS RELIABLE
+204,0,9,INTERNAL MEMORY WAS COMPARATIVELY LOWER
+204,32,3,RAM AND MAIN CAMERA WAS WELL QUALIFIED
+204,25,9,IT HAS 8 GB RAM POWER
+204,7,7,IT HAS THE ONLY 20 MP POWER  ON CAMERA
+204,18,8,"OVERALL ALL , IT HAS GOOD CHARACTERISTICS , SO IT WAS FAIR FOR THE QUOTED AMOUNT"
+204,15,6,SCREEN SIZE WILL NEED BETTER SIZE
+208,27,7,good quality
+208,0,7,good product
+208,17,8,nice appeal
+208,13,10,high rating
+208,12,8,attractive
+208,30,8,nice rate
+208,18,10,good view
+208,16,8,high quality
+208,2,8,nice appear
+208,22,7,appealing
+211,23,8,Performance is good
+211,20,7,BATTERY BACKUP IS GOOD
+211,3,8,PROCESSER IS GOOD
+211,29,9,GAMING IS GOOD
+211,13,7,CAMERA is good
+211,2,8,OS is good and clean
+211,22,6,PHONE LOOKS SLEAKY
+211,10,7,OVERALL GOOD
+211,24,8,CAMERA IS NEAT
+211,14,8,HANDLING IS GOOD
+215,23,8,PERFORMANCE IS GOOD
+215,9,7,HANDLING IS GOOD
+215,32,6,GAMING IS GOOD
+215,18,7,RESOLUTION IS GOOD
+215,0,9,CAMERA QUALITY IS GOOD
+215,15,7,PROCESSER IS GOOD
+215,10,7,CAMERA IS GOOD
+215,17,8,PERFORMANCE AND CAMERA IS GOOD.
+215,12,8,OVERALL IS GOOD.
+215,3,7,PERFORMANCE IS GOOD.
+226,8,7,high quality
+226,32,7,good appearance
+226,1,9,good nature
+226,22,10,highly recommended
+226,24,8,good view
+226,18,10,good for daily usage
+226,12,8,good
+226,0,10,attractive
+226,15,9,good model
+226,5,9,good features
+227,23,7,good quality
+227,14,7,high rating
+227,6,8,good looking
+227,8,7,best view
+227,16,6,good features
+227,3,10,useful for office
+227,24,10,attractive
+227,31,9,best features
+227,0,8,good view
+227,2,7,high quality
+230,24,8,high quality
+230,7,8,high rating
+230,32,7,good nature
+230,29,8,high view
+230,5,10,NATURE APPEARENCE
+230,28,9,good looking
+230,30,8,attractive
+230,16,8,good rating
+230,8,7,affordable
+230,18,7,high price
