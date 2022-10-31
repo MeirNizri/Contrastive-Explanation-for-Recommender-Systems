@@ -263,7 +263,7 @@
                     comparison.style.display = "block";
                 } 
                 else {
-                    if (fails < 1) {
+                    if (fails < 3) {
                         toComparison()
                         fails = fails+1
                     } else {
@@ -275,7 +275,7 @@
             }
             
             xhr1.onerror = function () {
-                if (fails < 1) {
+                if (fails < 3) {
                     toComparison()
                     fails = fails+1
                 } else {

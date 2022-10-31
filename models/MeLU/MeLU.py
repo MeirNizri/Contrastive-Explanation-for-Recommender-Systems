@@ -58,7 +58,7 @@ class MeLU(torch.nn.Module):
         # create train data
         self.dataset = dataset
         self.config = config
-        generate_train_data(dataset, config)
+        # generate_train_data(dataset, config)
         self.last_user = None
         # set local updates details
         self.use_cuda = config['use_cuda']
@@ -188,50 +188,3 @@ class MeLU(torch.nn.Module):
         query_y_pred = query_y_pred.view(-1).tolist()
         # query_y_pred = [round(rate,4) for rate in query_y_pred]
         return np.array(query_y_pred)
-
-    # def predict(self, items_to_predict, user_id, num_local_update=10):
-    #     # get clean data and user features
-    #     ratings_data = self.dataset.get_clean_ratings()
-    #     items_data = self.dataset.get_clean_data()
-    #     users_data = self.dataset.get_clean_users()
-        
-    #     user_info = users_data.loc[user_id].values
-    #     user_info = torch.tensor(user_info).long().unsqueeze(0)
-
-    #     # create query x
-    #     query_x = None
-    #     for _, item in items_to_predict.iterrows():
-    #         item_info = torch.tensor(item.array).long().unsqueeze(0)
-    #         # concatenates item and user info and add to query x
-    #         items_x_converted = torch.cat((item_info, user_info), 1)
-    #         try:
-    #             query_x = torch.cat((query_x, items_x_converted), 0)
-    #         except:
-    #             query_x = items_x_converted
-
-    #     # find all the items the user rated
-    #     items_rated_df = ratings_data.loc[ratings_data['user_id']==user_id]    
-    #     items_x = items_rated_df['cellphone_id'].to_numpy()
-    #     items_y = items_rated_df['rating'].to_numpy()
-        
-    #     # create support x
-    #     support_x = None
-    #     # get features of every item rated by the user
-    #     for i_id in items_x:
-    #         i_id = int(i_id)
-    #         item_info = items_data.loc[i_id].array
-    #         item_info = torch.tensor(item_info).long().unsqueeze(0)
-    #         # concatenates item and user info and add to support x
-    #         items_x_converted = torch.cat((item_info, user_info), 1)
-    #         try:
-    #             support_x = torch.cat((support_x, items_x_converted), 0)
-    #         except:
-    #             support_x = items_x_converted
-    #     # convert support_y to torch tensor
-    #     support_y = torch.FloatTensor(items_y)
-        
-    #     # get prediction for every item, convert to list and limit floats to two decimal points
-    #     query_y_pred = self.forward(support_x, support_y, query_x, num_local_update)
-    #     query_y_pred = query_y_pred.view(-1).tolist()
-        
-    #     return np.array(query_y_pred)

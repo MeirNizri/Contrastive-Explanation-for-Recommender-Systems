@@ -9,4 +9,4 @@ models/__pycache__
 datasets/contrastive-explanation-for-rs-41f703512db2.json
 datasets/contrast-explanation-rs-5731512d8ac1.json
 datasets/old/
-models/MeLU/train_data/
+models/MeLU/train_data
