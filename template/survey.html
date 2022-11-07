@@ -157,7 +157,7 @@
             </ol>
 
             <p align="center">
-                <!-- <button class="button button1" type="button" onclick="backItemsToRate()">Back</button> -->
+                <button class="button button1" type="button" onclick="backItemsToRate()">Back</button>
                 <button class="button button1" type="button" onclick="toConclusion()">Next</button>
             </p>
             <br />
@@ -189,7 +189,7 @@
     var phones_id = " "
     const xhr = new XMLHttpRequest();
     //xhr.open("GET", "https://contrast-explanation-rs-survey.uc.r.appspot.com/");
-    xhr.open("GET", "http://127.0.0.1:8080/");
+    xhr.open("GET", "http://localhost:5000/");
     xhr.send();
     
     //triggered when the response is completed
@@ -243,7 +243,7 @@
             var model = "melu";
             const xhr1 = new XMLHttpRequest();
             //xhr1.open("GET", "https://contrast-explanation-rs-survey.uc.r.appspot.com/"+model+"/"+phones_id+"/"+rating+"/"+year.value+"/"+gender.value+"/");
-            xhr1.open("GET", "http://127.0.0.1:8080/"+model+"/"+phones_id+"/"+rating+"/"+year.value+"/"+gender.value+"/");
+            xhr1.open("GET", "http://localhost:5000/"+model+"/"+phones_id+"/"+rating+"/"+year.value+"/"+gender.value+"/");
             xhr1.send();
             
             //triggered when the response is completed
@@ -326,8 +326,8 @@
         if (occupation.value == "") occupation_ = "null";
 
         const xhr2 = new XMLHttpRequest();
-        //xhr2.open("GET", "https://contrast-explanation-rs-survey.uc.r.appspot.com/"+year_+"/"+gender_+"/"+occupation_+"/"+phones_id+"/"+ratings+"/"+explanations+"/"+recommendedItem+"/"+randomItem+"/"+ourExp+"/");
-        xhr2.open("GET", "http://127.0.0.1:8080/"+year_+"/"+gender_+"/"+occupation_+"/"+phones_id+"/"+ratings+"/"+explanations+"/"+recommendedItem+"/"+randomItem+"/"+ourExp+"/");
+        //xhr2.open("GET", "https://flask-service.dakie9od9k6m6.us-east-1.cs.amazonlightsail.com/"+year_+"/"+gender_+"/"+occupation_+"/"+phones_id+"/"+ratings+"/"+explanations+"/"+recommendedItem+"/"+randomItem+"/"+ourExp+"/");
+        xhr2.open("GET", "http://localhost:5000/"+year_+"/"+gender_+"/"+occupation_+"/"+phones_id+"/"+ratings+"/"+explanations+"/"+recommendedItem+"/"+randomItem+"/"+ourExp+"/");
         xhr2.send();
     }
 

@@ -20,9 +20,9 @@ def contrast_exp(rs_model, p, q, data):
         q_copy, q_rating = temp
 
     # sample uniformly objects from the items' data that are "between" p and q
-    num_samples = 1000
+    num_samples = 500
     x_data = sample_between(p_copy, q_copy, data, num_samples)
-    x_data.drop_duplicates(inplace=True)
+    # x_data.drop_duplicates(inplace=True)
     x_data.reset_index(drop=True, inplace=True)
     y_data = pd.DataFrame(rs_model.predict(x_data), columns=['prediction'])
     # clear samples with all zeros
@@ -33,6 +33,11 @@ def contrast_exp(rs_model, p, q, data):
     # fit linear regression model and get weights for every feature
     linear_regression_model = LinearRegression().fit(x_data, y_data)
     weights = linear_regression_model.coef_[0]
+    features_ = np.array(p.index)
+    features_weights_ = dict(zip(features_, weights))
+    features_weights_ = sorted(features_weights_.items(), key=lambda x: x[1], reverse=True)
+    # print(f'features weights {features_weights}')
+    features_weights_ = dict(features_weights_)
 
     # get the scaled weights by w*(p-q) and save only features with a difference between p and q
     sub_pq = np.subtract(np.multiply(p_copy.to_numpy(), 1), np.multiply(q_copy.to_numpy(), 1))
@@ -46,6 +51,7 @@ def contrast_exp(rs_model, p, q, data):
     features_weights = sorted(features_weights.items(), key=lambda x: x[1], reverse=True)
     # print(f'features weights {features_weights}')
     features_weights = dict(features_weights)
+    # print(features_weights)
     
     for k in irrelevant_features:
         features_weights.pop(k, None)

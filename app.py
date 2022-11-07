@@ -5,7 +5,7 @@ import gspread
 import pandas as pd
 
 from datasets import cellphones
-from models import mlp_model#, wide_deep_model
+from models import mlp_model, wide_deep_model
 from models.MeLU.options import cellphone_config
 from models.MeLU.model_training import training
 from models.MeLU.MeLU import MeLU
@@ -42,7 +42,7 @@ def get_items_to_rate():
 
 @app.route("/survey/")
 def survey():
-    return render_template('survey.html')
+    return render_template('template/survey.html')
 
 @app.route("/<model>/<phones_id>/<ratings>/<birth_year>/<gender>/")
 def get_comparison_data(model, phones_id, ratings, birth_year, gender):
@@ -62,15 +62,15 @@ def get_comparison_data(model, phones_id, ratings, birth_year, gender):
         training(model, model_save=True)
         user_info = [2022-int(birth_year), 0 if gender == "Female" else 1, 0]
         model.set_user(user_info, phones_data, ratings)
-    # else:
-        # model = wide_deep
+    else:
+        model = wide_deep
 
     # get cellphone with max rating prediction
     phones_not_rated = clean_data.loc[clean_data.index.drop(phones_data.index)]
     phones_not_rated['user_id'] = -1
     phones_not_rated['age'] = 2022 - int(birth_year)
     phones_not_rated['gender'] = 0 if gender == "Female" else 1
-    phones_not_rated['occupation'] = 0
+    # phones_not_rated['occupation'] = 0
     predictions = model.predict(phones_not_rated)
     recommended_item = phones_not_rated.iloc[predictions.argmax()]
     recommended_item_raw = cellphones_data.loc[recommended_item.name]
@@ -156,4 +156,5 @@ def add_new_user(age, gender, occupation, phones_id, ratings, explanations, reco
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8080)
+    app.run(host='0.0.0.0', port=5000)
+    # app.run(host="127.0.0.1", port=8080)

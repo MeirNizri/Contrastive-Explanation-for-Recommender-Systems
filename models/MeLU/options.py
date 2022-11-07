@@ -2,7 +2,7 @@ cellphone_config = {
     # generate data
     'num_query': -5,
     # nn setting
-    'num_features': 25,
+    'num_features': 24,
     'embedding_dim': 32,
     'first_fc_hidden_dim': 64,
     'second_fc_hidden_dim': 64,

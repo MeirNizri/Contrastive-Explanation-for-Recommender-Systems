@@ -58,7 +58,7 @@ class MeLU(torch.nn.Module):
         # create train data
         self.dataset = dataset
         self.config = config
-        # generate_train_data(dataset, config)
+        generate_train_data(dataset, config)
         self.last_user = None
         # set local updates details
         self.use_cuda = config['use_cuda']
@@ -168,7 +168,7 @@ class MeLU(torch.nn.Module):
         
 
     def predict(self, items_to_predict):
-        items_to_predict = items_to_predict.drop(columns=['age','gender','occupation','user_id'])
+        items_to_predict = items_to_predict.drop(columns=['age','gender','user_id'])
         
         # create query x
         query_x = None

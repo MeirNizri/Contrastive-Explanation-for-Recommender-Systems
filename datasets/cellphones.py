@@ -58,13 +58,8 @@ class cellphones(object):
         gender = self.clean_users['gender'].unique().tolist()
         self.clean_users['gender'] = self.clean_users['gender'].apply(lambda x: gender.index(x))
         self.clean_users['gender'] = self.clean_users['gender'].astype("category")
-        occupation = self.clean_users['occupation'].unique().tolist()
-        self.clean_users['occupation'] = self.clean_users['occupation'].apply(lambda x: occupation.index(x))
-        self.clean_users['occupation'] = self.clean_users['occupation'].astype("category")
-        
-        # self.clean_data.set_index('cellphone_id', inplace=True)
-        # self.clean_users.set_index('user_id', inplace=True)
-        
+        self.clean_users = self.clean_users.drop(columns=['occupation'])
+
         self.preprocessed = True
         return self
 
@@ -109,9 +104,7 @@ class cellphones(object):
             user_items = pd.concat([items_x, user_x, items_y], axis=1)
             self.all_data = pd.concat([self.all_data, user_items])
 
-        self.all_data.reset_index(drop=True, inplace=True)
-        
-        self.all_data.to_csv(all_data_path)
+        self.all_data.to_csv(all_data_path, index=False)
         return self.all_data
 
     def get_name(self):

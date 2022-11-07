@@ -33,7 +33,7 @@ class wide_deep_model:
 
         # Hyperparameters
         MODEL_TYPE = 'wide_deep'
-        STEPS = 80000  # Number of batches to train
+        STEPS = 50000  # Number of batches to train
         BATCH_SIZE = 32
         # Wide (linear) model hyperparameters
         LINEAR_OPTIMIZER = 'adagrad'
@@ -71,7 +71,9 @@ class wide_deep_model:
         # Unique items and users in the dataset
         item_feat_shape = len(ITEM_FEAT_COL)
         items = cellphones_data.get_clean_data()
+        items.reset_index(inplace=True)
         users = cellphones_data.get_clean_users()
+        users.reset_index(inplace=True)
         print("Total {} items and {} users in the dataset".format(len(items), len(users)))
 
         # Define wide (linear) and deep (dnn) features
@@ -149,13 +151,20 @@ class wide_deep_model:
             print(rating_results)
 
     def predict(self, x):
+        s = x.copy()
+        if 'cellphone_id' not in s.columns:
+            s.reset_index(inplace=True)
+            s.rename(columns={"index": "cellphone_id"}, inplace=True)
         # convert dtypes
-        x = x.convert_dtypes()
-        x.iloc[:, 11:23] = x.iloc[:, 11:23].astype('bool')
-        x.iloc[:, [0,1,2,4,5,6,8,9,10,23,24,25,26]] = x.iloc[:,[0,1,2,4,5,6,8,9,10,23,24,25,26]].astype('int64')
-        x.iloc[:, [3, 7]] = x.iloc[:, [3, 7]].astype('float64')
+        # x = x.convert_dtypes()
+        # x.iloc[:, 11:23] = x.iloc[:, 11:23].astype('bool')
+        # x.iloc[:, [0, 11]] = x.iloc[:,[0, 11]].astype('int64')
+        # x.iloc[:, [23, -1]] = x.iloc[:, [23, -1]].astype('int64')
+        s = s.astype('int64')
+        s.iloc[:, 11:23] = s.iloc[:, 11:23].astype('bool')
+        # print(s.dtypes)
 
         # get prediction
-        prediction_generator = list(self.wide_deep_model.predict(input_fn=tf_utils.pandas_input_fn(df=x)))
+        prediction_generator = list(self.wide_deep_model.predict(input_fn=tf_utils.pandas_input_fn(df=s)))
         predictions = [p['predictions'][0] for p in prediction_generator]
         return np.asarray(predictions)

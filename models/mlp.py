@@ -33,7 +33,7 @@ class mlp_model:
         
         # split data to train and test
         y = all_data['rating']
-        X = all_data.drop(columns=['rating'])
+        X = all_data.drop(columns=['rating', 'cellphone_id'])
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
         
         # train mlp on all users data
@@ -60,6 +60,6 @@ class mlp_model:
 
     def predict(self, x):
         pred1 = self.mlp_all_best.predict(x)
-        x_ = x.drop(columns=['age','gender','occupation','user_id'])
+        x_ = x.drop(columns=['age','gender','user_id'])
         pred2 = self.mlp_user_best.predict(x_)
         return (pred1+pred2)/2
