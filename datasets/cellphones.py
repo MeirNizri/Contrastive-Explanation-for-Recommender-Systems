@@ -104,6 +104,9 @@ class cellphones(object):
             user_items = pd.concat([items_x, user_x, items_y], axis=1)
             self.all_data = pd.concat([self.all_data, user_items])
 
+        self.all_data.rename(columns={'index':'user_id'}, inplace=True)
+        # self.all_data['user_id'] = self.all_data['user_id'] .astype('int64')
+
         self.all_data.to_csv(all_data_path, index=False)
         return self.all_data
 

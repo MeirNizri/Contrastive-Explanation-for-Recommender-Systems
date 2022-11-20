@@ -130,7 +130,7 @@ class MeLU(torch.nn.Module):
         self.store_parameters()
     
     
-    def set_user(self, user_info, items_x, items_y, num_local_update=500):
+    def set_user(self, user_info, items_x, items_y, num_local_update=1000):
         self.user_info = torch.tensor(user_info).long().unsqueeze(0)
         
         # create query x

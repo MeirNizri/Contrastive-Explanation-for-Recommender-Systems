@@ -5,7 +5,7 @@ import gspread
 import pandas as pd
 
 from datasets import cellphones
-from models import mlp_model, wide_deep_model
+from models import wide_deep_model#, mlp_model 
 from models.MeLU.options import cellphone_config
 from models.MeLU.model_training import training
 from models.MeLU.MeLU import MeLU
@@ -19,9 +19,9 @@ cellphones_data = data.get_data()
 clean_data = data.get_clean_data()
 all_data = data.get_all_data()
 # create model
-# wide_deep = wide_deep_model()
+wide_deep = wide_deep_model()
 # create flask app
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 CORS(app)
 
 
@@ -42,7 +42,7 @@ def get_items_to_rate():
 
 @app.route("/survey/")
 def survey():
-    return render_template('template/survey.html')
+    return render_template('survey.html')
 
 @app.route("/<model>/<phones_id>/<ratings>/<birth_year>/<gender>/")
 def get_comparison_data(model, phones_id, ratings, birth_year, gender):
@@ -157,4 +157,3 @@ def add_new_user(age, gender, occupation, phones_id, ratings, explanations, reco
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
-    # app.run(host="127.0.0.1", port=8080)

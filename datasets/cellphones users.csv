@@ -37,9 +37,12 @@ user_id,age,gender,occupation
 105,25,Female,System Administrator
 106,32,Male,manager
 110,36,Male,Marketing
+111,37,Female,EDUCATION
+112,30,Female,Security
 113,56,Female,retail
 114,46,Male,technician
 115,37,Female,homemaker
+116,32,Male,teacher
 119,49,Female,president transportation company
 120,50,Female,manager
 123,32,Male,manager
@@ -54,6 +57,7 @@ user_id,age,gender,occupation
 144,38,-Select Gender-,ADMINISTRATIVE OFFICER
 145,32,Male,manager
 148,31,Female,Data analyst
+152,30,Female,Security
 154,32,Male,Information technology
 156,39,Female,master degree
 160,31,Male,construction
@@ -72,3 +76,25 @@ user_id,age,gender,occupation
 226,27,Female,Information Technology
 227,32,Male,Information technology
 230,29,Female,Information Technology
+231,58,Male,ADMINISTRATIVE OFFICER
+232,46,Male,writer
+233,31,Male,construction
+234,32,Female,registered
+235,56,Male,business
+236,33,Male,Transportation
+237,33,Male,Education
+238,30,Male,Security
+240,37,Female,SALES MANAGER
+242,35,Male,HEALTHARE
+243,42,Female,Manager
+244,41,Male,MANAGER
+245,35,Male,HEALTHCARE
+246,45,Female,MANAGER
+251,39,Male,Computer technician
+252,58,Male,ADMINISTRATIVE OFFICER
+253,40,Female,Information Technology
+254,25,Female,software developer
+255,25,Male,software developer
+256,49,Male,Information Technology
+257,25,Female,Manager
+258,25,Male,Executive Manager

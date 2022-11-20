@@ -13,7 +13,6 @@
 <div id="itemsToRate">
     <h5> 
         The goal of this survey is to elicit the preferneces of different users regarding cellphones.
-        It consists of rating only 10 cellphones (and providing demographic information).
     </h5>
     <h5> 
         Assume that you are intrested in buying a new cellphone (without a contract). 
@@ -157,7 +156,7 @@
             </ol>
 
             <p align="center">
-                <button class="button button1" type="button" onclick="backItemsToRate()">Back</button>
+                <!-- <button class="button button1" type="button" onclick="backItemsToRate()">Back</button> -->
                 <button class="button button1" type="button" onclick="toConclusion()">Next</button>
             </p>
             <br />
@@ -173,7 +172,7 @@
             <hr />
 
             <p align="center">
-                <button class="button button1" type="button" onclick="backComparison()">Back</button>
+                <!-- <button class="button button1" type="button" onclick="backComparison()">Back</button> -->
                 <button class="button button1" type="submit">Submit</button>
             </p>
             <br />
@@ -188,8 +187,8 @@
     var fails = 0
     var phones_id = " "
     const xhr = new XMLHttpRequest();
-    //xhr.open("GET", "https://contrast-explanation-rs-survey.uc.r.appspot.com/");
-    xhr.open("GET", "http://localhost:5000/");
+    xhr.open("GET", "https://flask-service4.dakie9od9k6m6.us-east-1.cs.amazonlightsail.com/");
+    //xhr.open("GET", "http://localhost:5000/");
     xhr.send();
     
     //triggered when the response is completed
@@ -239,11 +238,16 @@
             dataLoad.style.display = "block";
             failure.style.display = "none";
 
+            var year_ = year.value;
+            var gender_ = gender.value;
+            if (year.value == "" || year.value < 1962) year_ = 1984;
+            if (gender.value == "") gender_ = "Prefer not to answer";
+
             // wide_deep / mlp / melu
-            var model = "melu";
+            var model = "wide_deep";
             const xhr1 = new XMLHttpRequest();
-            //xhr1.open("GET", "https://contrast-explanation-rs-survey.uc.r.appspot.com/"+model+"/"+phones_id+"/"+rating+"/"+year.value+"/"+gender.value+"/");
-            xhr1.open("GET", "http://localhost:5000/"+model+"/"+phones_id+"/"+rating+"/"+year.value+"/"+gender.value+"/");
+            xhr1.open("GET", "https://flask-service4.dakie9od9k6m6.us-east-1.cs.amazonlightsail.com/"+model+"/"+phones_id+"/"+rating+"/"+year_+"/"+gender_+"/");
+            //xhr1.open("GET", "http://localhost:5000/"+model+"/"+phones_id+"/"+rating+"/"+year_+"/"+gender_+"/");
             xhr1.send();
             
             //triggered when the response is completed
@@ -263,7 +267,7 @@
                     comparison.style.display = "block";
                 } 
                 else {
-                    if (fails < 3) {
+                    if (fails < 1) {
                         toComparison()
                         fails = fails+1
                     } else {
@@ -275,7 +279,7 @@
             }
             
             xhr1.onerror = function () {
-                if (fails < 3) {
+                if (fails < 1) {
                     toComparison()
                     fails = fails+1
                 } else {
@@ -314,20 +318,20 @@
     function addUser() {
         var ratings = [phone_0.value, phone_1.value, phone_2.value, phone_3.value, phone_4.value, phone_5.value, phone_6.value, phone_7.value, phone_8.value, phone_9.value];
         var explanations = [exp_0.value, exp_1.value, exp_2.value, exp_3.value, exp_4.value, exp_5.value, exp_6.value, exp_7.value, exp_8.value, exp_9.value];
-        recommendedItem = document.getElementById("recommendedItem").getElementsByTagName('td')[1].innerHTML;
-        randomItem = document.getElementById("randomItem").getElementsByTagName('td')[1].innerHTML;
-        ourExp = document.getElementById("ourExpText").innerHTML
+        recommendedItem = document.getElementById("recommendedItem").getElementsByTagName('td')[1].innerText;
+        randomItem = document.getElementById("randomItem").getElementsByTagName('td')[1].innerText;
+        ourExp = document.getElementById("ourExpText").innerText;
 
         var year_ = year.value;
         var gender_ = gender.value;
         var occupation_ = occupation.value;
         if (year.value == "") year_ = 0;
-        if (gender.value == "") gender_ = "Prefer not to answer";
-        if (occupation.value == "") occupation_ = "null";
+        if (gender.value == "") gender_ = "noAnswer";
+        if (occupation.value == "") occupation_ = "nll";
 
         const xhr2 = new XMLHttpRequest();
-        //xhr2.open("GET", "https://flask-service.dakie9od9k6m6.us-east-1.cs.amazonlightsail.com/"+year_+"/"+gender_+"/"+occupation_+"/"+phones_id+"/"+ratings+"/"+explanations+"/"+recommendedItem+"/"+randomItem+"/"+ourExp+"/");
-        xhr2.open("GET", "http://localhost:5000/"+year_+"/"+gender_+"/"+occupation_+"/"+phones_id+"/"+ratings+"/"+explanations+"/"+recommendedItem+"/"+randomItem+"/"+ourExp+"/");
+        xhr2.open("GET", "https://flask-service4.dakie9od9k6m6.us-east-1.cs.amazonlightsail.com/"+year_+"/"+gender_+"/"+occupation_+"/"+phones_id+"/"+ratings+"/"+explanations+"/"+recommendedItem+"/"+randomItem+"/"+ourExp+"/");
+        //xhr2.open("GET", "http://localhost:5000/"+year_+"/"+gender_+"/"+occupation_+"/"+phones_id+"/"+ratings+"/"+explanations+"/"+recommendedItem+"/"+randomItem+"/"+ourExp+"/");
         xhr2.send();
     }
 

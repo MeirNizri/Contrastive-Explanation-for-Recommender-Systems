@@ -33,18 +33,18 @@ class wide_deep_model:
 
         # Hyperparameters
         MODEL_TYPE = 'wide_deep'
-        STEPS = 50000  # Number of batches to train
+        STEPS = 10000  # Number of batches to train
         BATCH_SIZE = 32
         # Wide (linear) model hyperparameters
         LINEAR_OPTIMIZER = 'adagrad'
-        LINEAR_OPTIMIZER_LR = 0.0621  # Learning rate
+        LINEAR_OPTIMIZER_LR = 0.3  # Learning rate
         LINEAR_L1_REG = 0.0  # Regularization rate for Ftrl Optimizer
         LINEAR_L2_REG = 0.0
         LINEAR_MOMENTUM = 0.0  # Momentum for MomentumOptimizer or RMSPropOptimizer
         # DNN model hyperparameters
         # DNN_OPTIMIZER = 'adam'
         DNN_OPTIMIZER = 'adadelta'
-        DNN_OPTIMIZER_LR = 0.1
+        DNN_OPTIMIZER_LR = 0.3
         DNN_L1_REG = 0.0  # Regularization rate for FtrlOptimizer
         DNN_L2_REG = 0.0
         DNN_MOMENTUM = 0.0  # Momentum for MomentumOptimizer or RMSPropOptimizer
@@ -109,7 +109,7 @@ class wide_deep_model:
             dnn_dropout=DNN_DROPOUT,
             dnn_batch_norm=(DNN_BATCH_NORM == 1),
             log_every_n_iter=max(1, STEPS // 10),  # log 10 times
-            save_checkpoints_steps=max(1, STEPS // 30),
+            save_checkpoints_steps=max(1, STEPS // 10),
             seed=RANDOM_SEED
         )
 
@@ -150,19 +150,15 @@ class wide_deep_model:
                 rating_results[m] = result
             print(rating_results)
 
+
     def predict(self, x):
         s = x.copy()
         if 'cellphone_id' not in s.columns:
             s.reset_index(inplace=True)
             s.rename(columns={"index": "cellphone_id"}, inplace=True)
         # convert dtypes
-        # x = x.convert_dtypes()
-        # x.iloc[:, 11:23] = x.iloc[:, 11:23].astype('bool')
-        # x.iloc[:, [0, 11]] = x.iloc[:,[0, 11]].astype('int64')
-        # x.iloc[:, [23, -1]] = x.iloc[:, [23, -1]].astype('int64')
         s = s.astype('int64')
         s.iloc[:, 11:23] = s.iloc[:, 11:23].astype('bool')
-        # print(s.dtypes)
 
         # get prediction
         prediction_generator = list(self.wide_deep_model.predict(input_fn=tf_utils.pandas_input_fn(df=s)))

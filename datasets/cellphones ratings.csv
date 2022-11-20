@@ -379,6 +379,26 @@ user_id,cellphone_id,rating,explanations
 110,29,6,Would prefer the A53
 110,9,7,It's most similar to what I have now.
 110,14,1,Don't want a foldable phone
+111,8,4,GAMERA
+111,4,1,GOOD
+111,7,3,BATTERY LIFE
+111,20,10,GOOD
+111,25,5,GOOD
+111,30,9,GOOD
+111,5,2,SAFE
+111,23,7,OK
+111,18,6,NCE
+111,26,8,DUPER
+112,17,10,great product
+112,23,10,great product
+112,13,8,great product
+112,27,9,great product
+112,11,1,don't like it
+112,31,2,don't like it
+112,6,4,don't like it
+112,29,3,don't like it
+112,14,2,don't like it
+112,3,8,great product
 113,14,5,I like flip and folding phones
 113,1,5,A mini might be too small to see properly
 113,29,2,I'm not sure how well this would work
@@ -409,6 +429,16 @@ user_id,cellphone_id,rating,explanations
 115,19,7,overall pretty good stats and a reasonable price
 115,30,5,cheap but camera quality is too low
 115,26,10,Best rating and more reasonable price than others of that quality
+116,19,1,don't like android
+116,4,10,lots of memory
+116,20,1,don't like android
+116,10,1,don't like android
+116,12,1,don't like android
+116,13,1,don't like android or flip
+116,3,10,good memory storage
+116,16,1,don't like android
+116,31,1,don't like android
+116,27,1,I prefer Iphone
 119,25,8,fair price
 119,3,1,Have one excellent
 119,16,4,solid name
@@ -549,6 +579,16 @@ user_id,cellphone_id,rating,explanations
 148,24,5,not a fan of the brand
 148,5,4,low internal memory
 148,2,10,Great battery size and lighter weight
+152,25,9,great product
+152,5,9,great product
+152,27,7,great product
+152,24,5,average product
+152,4,8,great product
+152,10,2,don't like it
+152,28,2,don't like it
+152,15,1,don't like it
+152,8,2,don't like it
+152,19,8,great product
 154,25,7,good quality
 154,6,9,high rating
 154,21,6,good looking
@@ -729,3 +769,223 @@ user_id,cellphone_id,rating,explanations
 230,16,8,good rating
 230,8,7,affordable
 230,18,7,high price
+231,6,10,compact
+231,9,7,cool
+231,30,4,old
+231,19,8,over price
+231,17,10,camera beast
+231,15,10,value for money
+231,24,5,worst
+231,25,7,good quality
+231,27,9,value for money
+231,4,6,good but too cost
+232,27,4,too expensive
+232,18,6,more reasonable
+232,13,6,"I like the flip design, still too expensive."
+232,15,4,too expensive
+232,31,4,fine if I needed a budget phone.
+232,7,4,decent camera for a budget phone.
+232,10,7,"reliable, probably reasonable price."
+232,3,7,"very reliable, way too expensive."
+232,25,8,great value for what you get
+232,12,3,way too expensive.
+233,8,1,low specs
+233,27,3,brand  not trustworthy
+233,12,10,high end phone
+233,31,1,low specs
+233,7,1,low specs
+233,9,6,good price for specs
+233,6,4,brand  not trustworthy
+233,20,7,good price for specs
+233,30,1,low specs
+233,18,1,low specs
+234,20,4,i'm somewhat familiar with android OS and this has more ram than the next choice
+234,10,8,samsung would be my next choice and this seems to have a better camer
+234,13,7,the other samsung
+234,6,1,this became #1 by process of elimination
+234,30,1,very little ram and memory
+234,25,6,the amount of memory
+234,1,10,i prefer iphones
+234,16,5,google is a pretty trusted brand so this would be my next choice
+234,5,9,"i prefer iphones, but this is a later model"
+234,18,3,"same reason as choice #4, but less ram"
+235,18,10,its very nice model
+235,8,8,its also nice model
+235,30,6,i dont know
+235,16,7,i dont use this model
+235,23,8,very nice
+235,25,9,its very good model
+235,9,8,i dont use it
+235,1,10,its always nice model
+235,27,10,nice
+235,0,10,its very good model
+236,29,10,Lot of ram and good brand
+236,1,10,Apple is reliable
+236,30,1,Not enough ram
+236,27,1,Don't trust brand
+236,9,10,Samsung has reliable products
+236,3,10,Apple makes good products
+236,31,2,Good brand name but not enough ram
+236,19,8,wor dof mouth says oneplus is not that good
+236,16,10,"Have used a pixel in the past, enjoyed it"
+236,13,10,Good brand and plenty of ram
+237,19,9,Good price to performance ratio
+237,22,6,"Excellent performance and memory, but high price"
+237,30,5,"Great price, but bad memory, RAM, and performance"
+237,13,3,Overpriced relative to performance and other specs
+237,20,6,"Solid performance and features, but highlhy priced"
+237,2,6,"Similar specs as the OnePlus 10 pro, but a little cheaper"
+237,24,5,Cheap and decent value
+237,15,4,Mid tier pricing but not as good as other options in that price range
+237,25,8,Good mid range specs and performance for a competitive price
+237,8,3,Compares poorly to the other low budget options
+238,25,9,great product
+238,5,9,great product
+238,27,7,great product
+238,24,5,average product
+238,4,8,great product
+238,10,2,don't like it
+238,28,2,don't like it
+238,15,1,don't like it
+238,8,2,don't like it
+238,19,8,great product
+240,16,7,camera is good
+240,20,8,performance is good
+240,23,7,camera is good
+240,27,6,GAMING IS GOOD
+240,28,5,CAMERA is good
+240,9,7,OS is good and clean
+240,21,8,performance is good
+240,17,7,OVERALL GOOD
+240,1,8,CAMERA IS NEAT
+240,7,7,HANDLING IS GOOD
+242,24,4,WORST
+242,22,7,AVERAGE
+242,8,5,WORST
+242,13,6,NOT BAD
+242,17,7,GOOD
+242,4,8,BEST
+242,1,7,AVERAGE
+242,29,2,WORST
+242,31,2,WORST
+242,10,8,BEST
+243,7,8,Good processing
+243,15,8,good camera
+243,13,7,storage
+243,24,6,game processing
+243,23,10,Good camera
+243,28,8,Good performance
+243,21,6,camera good
+243,20,9,storage
+243,6,8,gaming procesas
+243,18,9,good os process
+244,29,8,good processing
+244,12,9,good camer
+244,17,8,STORAGE
+244,20,9,GOOD RAM
+244,25,9,SPECIFICATION
+244,19,9,STORAGE
+244,24,9,OS
+244,5,8,GOOD PROCESSOR
+244,9,9,STORAGE
+244,0,9,GOOD PROCESSOR
+245,2,6,AVERAGE
+245,24,3,WORST
+245,19,7,GOOD
+245,4,8,BEST QUALITY
+245,22,10,CAMERA QUALITY
+245,27,7,AVERAGE
+245,25,7,AVERAGE
+245,31,2,WORST
+245,15,5,NOT BAD
+245,11,7,GOOD
+246,17,7,GOOD
+246,6,6,AVERAGE
+246,7,2,WORST CAMERA
+246,8,3,FAIR
+246,29,3,WORST PERFORMANCE
+246,28,6,AVERAGE
+246,0,8,GOOD BUT AVERAGE BATTERY
+246,20,8,BEST PERFORMANCE
+246,23,9,WORTH FOR PRICE
+246,30,1,VERY BAD
+251,15,7,Trustable brand and specs are really worth for money
+251,32,6,I never used any Motorola mobile
+251,2,7,One of my favt. mobile brand
+251,10,7,It's so easy to use the OS interface
+251,20,8,Long lasting battery experience
+251,25,7,Performance of this simply awesome
+251,18,6,It has a middle level specification and somewhatworth for money
+251,21,8,I really loved the performance of this model
+251,22,7,simply worth for money
+251,4,8,Camera feature is so nice
+252,6,10,compact
+252,9,7,cool
+252,30,4,old
+252,19,8,over price
+252,17,10,camera beast
+252,15,10,value for money
+252,24,5,worst
+252,25,7,good quality
+252,27,9,value for money
+252,4,6,good but too cost
+253,7,8,Good camera quality
+253,21,7,Good Processor
+253,8,6,Good camera
+253,0,8,Good Internal memory
+253,3,4,Good Internal memory
+253,30,6,Good battery power
+253,4,8,Good performence
+253,28,7,Internal Memory good
+253,16,9,Good performence
+253,15,9,Good Ram
+254,16,6,NICE
+254,21,4,useful
+254,1,5,helpful
+254,26,18,reliable
+254,11,4,best
+254,20,8,nice
+254,30,5,better
+254,5,10,better
+254,32,8,credible
+254,14,7,informative
+255,8,10,Camera was very high
+255,21,10,battery was very high
+255,9,10,nice looking
+255,1,10,model was comfortable
+255,12,10,internal memory was acceptablle
+255,4,10,screen size was good
+255,25,10,brand name was relable
+255,6,10,selfie camera was acceptable
+255,14,10,RAM was very high
+255,13,10,ram was acceptable
+256,2,7,Good camera quality
+256,25,8,Good Processor
+256,4,5,Good performence
+256,12,7,Good Internal memory
+256,31,7,Good battery power
+256,22,6,Good camera
+256,18,8,Good Internal memory
+256,32,9,Good camera
+256,16,7,Good performence
+256,15,9,Good Ram
+257,4,8,High Memory
+257,12,7,High RAM
+257,25,8,High Memory and RAM
+257,0,7,Latest Model
+257,29,7,High MP for camera
+257,8,5,Price was low
+257,17,9,High Memory
+257,30,5,Price was too low.
+257,2,6,Good brand
+257,20,8,High RAM
+258,22,9,High Memory and RAM.
+258,6,7,High MP for main camera.
+258,29,6,High Battery size.
+258,26,7,Good performance
+258,15,6,High Memory
+258,31,5,Low Memory and low performance
+258,17,8,High RAM
+258,23,9,High Memory and RAM.
+258,27,8,High MP for main camera
+258,24,6,Low performance
