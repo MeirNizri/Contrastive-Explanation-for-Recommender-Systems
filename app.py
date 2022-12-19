@@ -5,7 +5,7 @@ import gspread
 import pandas as pd
 
 from datasets import cellphones
-from models import wide_deep_model#, mlp_model 
+from models import wide_deep_model, mlp_model 
 from models.MeLU.options import cellphone_config
 from models.MeLU.model_training import training
 from models.MeLU.MeLU import MeLU
